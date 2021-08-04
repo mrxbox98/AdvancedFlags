@@ -2,7 +2,7 @@ package me.mrxbox98.v1_8_9.advancedflags;
 
 import com.github.fierioziy.particlenativeapi.api.ParticleNativeAPI;
 import com.github.fierioziy.particlenativeapi.api.Particles_1_8;
-import com.github.fierioziy.particlenativeapi.plugin.ParticleNativePlugin;
+import com.github.fierioziy.particlenativeapi.core.ParticleNativeCore;
 import com.google.gson.Gson;
 import me.mrxbox98.v1_8_9.advancedflags.commands.CommandHandler;
 import me.mrxbox98.v1_8_9.advancedflags.config.AdvancedConfig;
@@ -19,9 +19,9 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 
-public final class AdvancedFlags extends JavaPlugin implements LogHelper {
+public final class AdvancedFlags implements LogHelper {
 
-    private static AdvancedFlags instance;
+    public static JavaPlugin instance;
 
     public static Particles_1_8 particles;
 
@@ -29,9 +29,9 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
     public static HashMap<String, String> aliases;
 
-    @Override
     public void onEnable() {
-        instance=this;
+
+        instance=getInstance();
 
         try {
             setup();
@@ -39,25 +39,19 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
             e.printStackTrace();
         }
 
-        ParticleNativeAPI api = ParticleNativePlugin.getAPI();
+        ParticleNativeAPI api = ParticleNativeCore.loadAPI(instance);
 
         particles = api.getParticles_1_8();
 
         CommandHandler.setupCommands();
 
-        getServer().getPluginManager().registerEvents(new MainListener(),this);
+        instance.getServer().getPluginManager().registerEvents(new MainListener(), me.mrxbox98.v1_8_8.advancedflags.AdvancedFlags.instance);
 
         System.out.println(aliases);
     }
 
-    @Override
     public void onDisable() {
         // Plugin shutdown logic
-    }
-
-    public static AdvancedFlags getInstance()
-    {
-        return instance;
     }
 
     /**
@@ -71,17 +65,17 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
             public void run() {
                 for(Player player: instance.getServer().getOnlinePlayers())
                 {
-                    if(AdvancedPlayer.getAdvancedPlayer(player)==null || AdvancedPlayer.getAdvancedPlayer(player).flagId==-1)
+                    if(me.mrxbox98.v1_8_8.advancedflags.utils.AdvancedPlayer.getAdvancedPlayer(player)==null || me.mrxbox98.v1_8_8.advancedflags.utils.AdvancedPlayer.getAdvancedPlayer(player).flagId==-1)
                     {
 
                     }
                     else
                     {
-                        FlagManager.drawFlagOnPlayer(player, FlagManager.flags.get(AdvancedPlayer.getAdvancedPlayer(player).flagId));
+                        me.mrxbox98.v1_8_8.advancedflags.flags.FlagManager.drawFlagOnPlayer(player, me.mrxbox98.v1_8_8.advancedflags.flags.FlagManager.flags.get(AdvancedPlayer.getAdvancedPlayer(player).flagId));
                     }
                 }
             }
-        }.runTaskTimerAsynchronously(instance, AdvancedConfig.delay,1);
+        }.runTaskTimerAsynchronously(instance, me.mrxbox98.v1_8_8.advancedflags.config.AdvancedConfig.delay,1);
     }
 
     /**
@@ -91,7 +85,7 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
     public static void setup() throws IOException {
         AdvancedConfig.setupConfig();
 
-        FlagManager.setup();
+        me.mrxbox98.v1_8_8.advancedflags.flags.FlagManager.setup();
         setupFlags();
 
         aliases=setupAliases();
@@ -142,6 +136,12 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
         }
     }
 
+    /**
+     * Reads the stuff in the reader
+     * @param rd the reader
+     * @return the data in the reader
+     * @throws IOException possible error
+     */
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;
@@ -151,4 +151,10 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
         return sb.toString();
     }
 
+    public static JavaPlugin getInstance()
+    {
+        return me.mrxbox98.advancedflags.AdvancedFlags.getInstance();
+    }
+
 }
+

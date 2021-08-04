@@ -2,7 +2,7 @@ package me.mrxbox98.v1_8_8.advancedflags;
 
 import com.github.fierioziy.particlenativeapi.api.ParticleNativeAPI;
 import com.github.fierioziy.particlenativeapi.api.Particles_1_8;
-import com.github.fierioziy.particlenativeapi.plugin.ParticleNativePlugin;
+import com.github.fierioziy.particlenativeapi.core.ParticleNativeCore;
 import com.google.gson.Gson;
 import me.mrxbox98.v1_8_8.advancedflags.commands.CommandHandler;
 import me.mrxbox98.v1_8_8.advancedflags.config.AdvancedConfig;
@@ -39,7 +39,7 @@ public final class AdvancedFlags implements LogHelper {
             e.printStackTrace();
         }
 
-        ParticleNativeAPI api = ParticleNativePlugin.getAPI();
+        ParticleNativeAPI api = ParticleNativeCore.loadAPI(instance);
 
         particles = api.getParticles_1_8();
 

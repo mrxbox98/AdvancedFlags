@@ -19,22 +19,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                </configuration>
-            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -48,15 +32,26 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version>
+                <version>3.2.3</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
                         <goals>
                             <goal>shade</goal>
                         </goals>
+
                         <configuration>
-                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <!-- replace shaded version with main artifact -->
+                            <shadedArtifactAttached>false</shadedArtifactAttached>
+
+                            <!-- relocate API classes to avoid same-classpath-conflicts -->
+                            <!-- with other plugins using this core API -->
+                            <relocations>
+                                <relocation>
+                                    <pattern>com.github.fierioziy.particlenativeapi</pattern>
+                                    <shadedPattern>me.mrxbox98.particleapi</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </execution>
                 </executions>
@@ -91,10 +86,12 @@
 
         <dependency>
             <groupId>com.github.fierioziy.particlenativeapi</groupId>
-            <artifactId>ParticleNativeAPI-plugin</artifactId>
+            <artifactId>ParticleNativeAPI-core</artifactId>
             <version>3.1.0</version>
-            <scope>provided</scope>
+            <scope>compile</scope>
         </dependency>
+
+
 
     </dependencies>
 </project>

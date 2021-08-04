@@ -2,7 +2,7 @@ package me.mrxbox98.v1_10_1.advancedflags;
 
 import com.github.fierioziy.particlenativeapi.api.ParticleNativeAPI;
 import com.github.fierioziy.particlenativeapi.api.Particles_1_8;
-import com.github.fierioziy.particlenativeapi.plugin.ParticleNativePlugin;
+import com.github.fierioziy.particlenativeapi.core.ParticleNativeCore;
 import com.google.gson.Gson;
 import me.mrxbox98.v1_10_1.advancedflags.commands.CommandHandler;
 import me.mrxbox98.v1_10_1.advancedflags.config.AdvancedConfig;
@@ -19,9 +19,9 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 
-public final class AdvancedFlags extends JavaPlugin implements LogHelper {
+public final class AdvancedFlags implements LogHelper {
 
-    private static AdvancedFlags instance;
+    public static JavaPlugin instance;
 
     public static Particles_1_8 particles;
 
@@ -29,9 +29,9 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
     public static HashMap<String, String> aliases;
 
-    @Override
     public void onEnable() {
-        instance=this;
+
+        instance=getInstance();
 
         try {
             setup();
@@ -39,25 +39,19 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
             e.printStackTrace();
         }
 
-        ParticleNativeAPI api = ParticleNativePlugin.getAPI();
+        ParticleNativeAPI api = ParticleNativeCore.loadAPI(instance);
 
         particles = api.getParticles_1_8();
 
         CommandHandler.setupCommands();
 
-        getServer().getPluginManager().registerEvents(new MainListener(),this);
+        instance.getServer().getPluginManager().registerEvents(new MainListener(),AdvancedFlags.instance);
 
         System.out.println(aliases);
     }
 
-    @Override
     public void onDisable() {
         // Plugin shutdown logic
-    }
-
-    public static AdvancedFlags getInstance()
-    {
-        return instance;
     }
 
     /**
@@ -142,6 +136,12 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
         }
     }
 
+    /**
+     * Reads the stuff in the reader
+     * @param rd the reader
+     * @return the data in the reader
+     * @throws IOException possible error
+     */
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;
@@ -149,6 +149,11 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
             sb.append((char) cp);
         }
         return sb.toString();
+    }
+
+    public static JavaPlugin getInstance()
+    {
+        return me.mrxbox98.advancedflags.AdvancedFlags.getInstance();
     }
 
 }
