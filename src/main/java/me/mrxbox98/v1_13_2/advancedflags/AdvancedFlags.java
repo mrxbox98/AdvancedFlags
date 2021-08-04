@@ -1,7 +1,7 @@
 package me.mrxbox98.v1_13_2.advancedflags;
 
 import com.github.fierioziy.particlenativeapi.api.ParticleNativeAPI;
-import com.github.fierioziy.particlenativeapi.api.Particles_1_8;
+import com.github.fierioziy.particlenativeapi.api.Particles_1_13;
 import com.github.fierioziy.particlenativeapi.core.ParticleNativeCore;
 import com.google.gson.Gson;
 import me.mrxbox98.v1_13_2.advancedflags.commands.CommandHandler;
@@ -23,7 +23,7 @@ public final class AdvancedFlags implements LogHelper {
 
     public static JavaPlugin instance;
 
-    public static Particles_1_8 particles;
+    public static Particles_1_13 particles;
 
     public static File data;
 
@@ -41,7 +41,7 @@ public final class AdvancedFlags implements LogHelper {
 
         ParticleNativeAPI api = ParticleNativeCore.loadAPI(instance);
 
-        particles = api.getParticles_1_8();
+        particles = api.getParticles_1_13();
 
         CommandHandler.setupCommands();
 
