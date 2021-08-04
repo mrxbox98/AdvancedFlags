@@ -66,6 +66,9 @@ public class AdvancedFlagGui implements Listener, LogHelper {
                         inventory.addItem(createGuiItem(Material.STAINED_GLASS_PANE, ChatColor.RED+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), 14,ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------", ChatColor.AQUA+"You do not have this flag",ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------"));
                     }
                 }
+                /*
+                
+                 */
                 else
                 {
                     if(player.hasPermission("flags."+ FlagManager.flags.get(i).abbr))
