@@ -5,11 +5,9 @@ import com.github.fierioziy.particlenativeapi.api.Particles_1_8;
 import com.github.fierioziy.particlenativeapi.core.ParticleNativeCore;
 import me.mrxbox98.advancedflags.commands.CommandHandler;
 import me.mrxbox98.advancedflags.config.AdvancedConfig;
-import me.mrxbox98.advancedflags.flags.Flag;
 import me.mrxbox98.advancedflags.flags.FlagManager;
 import me.mrxbox98.advancedflags.listeners.MainListener;
 import me.mrxbox98.advancedflags.utils.AdvancedPlayer;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -25,11 +23,22 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
     public static Particles_1_8 particles;
 
+    public static boolean v1_8 =true;
+
     public static HashMap<String, String> aliases = new HashMap<>();
 
     public void onEnable() {
 
         instance=this;
+
+        if(getServer().getVersion().contains("1.8"))
+        {
+            v1_8=true;
+        }
+        else
+        {
+            v1_8=false;
+        }
 
         try {
             setup();
