@@ -111,7 +111,6 @@ public class FlagManager implements LogHelper {
             "IS",
             "IN",
             "ID",
-            "Is",
             "IQ",
             "IE",
             "IM",
