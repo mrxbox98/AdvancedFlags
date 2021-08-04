@@ -31,6 +31,8 @@ public final class AdvancedFlags implements LogHelper {
 
     public void onEnable() {
 
+        instance=getInstance();
+
         try {
             setup();
         } catch (IOException e) {
@@ -134,6 +136,12 @@ public final class AdvancedFlags implements LogHelper {
         }
     }
 
+    /**
+     * Reads the stuff in the reader
+     * @param rd the reader
+     * @return the data in the reader
+     * @throws IOException possible error
+     */
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;

@@ -1,7 +1,5 @@
 package me.mrxbox98.advancedflags;
 
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class AdvancedFlags extends JavaPlugin implements LogHelper {
@@ -16,7 +14,7 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
         if(getServer().getVersion().contains("1.8.8"))
         {
-            new AdvancedFlags().onEnable();
+            new me.mrxbox98.v1_8_8.advancedflags.AdvancedFlags().onEnable();
         }
     }
 
