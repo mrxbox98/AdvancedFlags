@@ -165,7 +165,7 @@ public class AdvancedFlagGui implements Listener, LogHelper {
             }
             if(clickedItem.getItemMeta().getDisplayName().contains("Next Page"))
             {
-                if(page<6)
+                if(page<5)
                 {
                     clearItems();
                     page++;
@@ -181,9 +181,11 @@ public class AdvancedFlagGui implements Listener, LogHelper {
         final Player p = (Player) e.getWhoClicked();
 
         // Using slots click is a best option for your inventory click's
-        AdvancedPlayer.getAdvancedPlayer(p).flagId=e.getRawSlot()*page;
+        AdvancedPlayer.getAdvancedPlayer(p).flagId=e.getRawSlot()+page*45;
 
-        send(p,"Equiped flag id: " +e.getRawSlot()*page);
+        System.out.println(page);
+
+        send(p,"Equiped flag id: " +e.getRawSlot()+page*45);
     }
 
     // Cancel dragging in our inventory
