@@ -19,19 +19,17 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 
-public final class AdvancedFlags implements LogHelper {
+public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
     public static JavaPlugin instance;
 
     public static Particles_1_8 particles;
 
-    public static File data;
-
     public static HashMap<String, String> aliases;
 
     public void onEnable() {
 
-        instance=getInstance();
+        instance=this;
 
         try {
             setup();
@@ -153,7 +151,7 @@ public final class AdvancedFlags implements LogHelper {
 
     public static JavaPlugin getInstance()
     {
-        return getInstance();
+        return instance;
     }
 
 }
