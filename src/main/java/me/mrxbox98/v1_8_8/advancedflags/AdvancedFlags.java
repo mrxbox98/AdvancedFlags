@@ -19,9 +19,9 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 
-public final class AdvancedFlags extends JavaPlugin implements LogHelper {
+public final class AdvancedFlags implements LogHelper {
 
-    private static AdvancedFlags instance;
+    public static JavaPlugin instance;
 
     public static Particles_1_8 particles;
 
@@ -29,9 +29,7 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
     public static HashMap<String, String> aliases;
 
-    @Override
     public void onEnable() {
-        instance=this;
 
         try {
             setup();
@@ -45,19 +43,13 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
         CommandHandler.setupCommands();
 
-        getServer().getPluginManager().registerEvents(new MainListener(),this);
+        instance.getServer().getPluginManager().registerEvents(new MainListener(),AdvancedFlags.instance);
 
         System.out.println(aliases);
     }
 
-    @Override
     public void onDisable() {
         // Plugin shutdown logic
-    }
-
-    public static AdvancedFlags getInstance()
-    {
-        return instance;
     }
 
     /**
@@ -149,6 +141,11 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
             sb.append((char) cp);
         }
         return sb.toString();
+    }
+
+    public static JavaPlugin getInstance()
+    {
+        return me.mrxbox98.advancedflags.AdvancedFlags.getInstance();
     }
 
 }
