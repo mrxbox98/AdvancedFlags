@@ -2,11 +2,15 @@ package me.mrxbox98.advancedflags.commands;
 
 import me.mrxbox98.advancedflags.AdvancedFlags;
 import me.mrxbox98.advancedflags.flags.AdvancedFlagGui;
+import me.mrxbox98.advancedflags.flags.FlagManager;
+import me.mrxbox98.advancedflags.utils.AdvancedPlayer;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.Locale;
 
 public class CommandHandler {
 
@@ -75,12 +79,34 @@ public class CommandHandler {
                  * <br>Opens the Flag Gui with the player<br>
                  * <br>Also prevents any error and checks args<br>
                  */
-                if(strings[0].equalsIgnoreCase("flags"))
+                if(strings[0].equalsIgnoreCase("flags") && strings.length==1)
                 {
                     AdvancedFlags.getInstance().getServer().getPluginManager().registerEvents(new AdvancedFlagGui((Player) commandSender,1), AdvancedFlags.getInstance());
+                    return true;
+                }
 
+                /*
+                 * The player will be able to select their own flag with a two digit code or the name
+                 */
+                if(strings[0].equalsIgnoreCase("flags") && strings.length==2)
+                {
+
+                    if(strings[1].length()==2)
+                    {
+                        AdvancedPlayer.getAdvancedPlayer(player).flagId= FlagManager.abbreviations.indexOf(strings[1].toUpperCase());
+                    }
+                    else
+                    {
+                        AdvancedFlags.aliases.forEach((k,v) -> {
+                            if(v.equalsIgnoreCase(strings[1]))
+                            {
+                                AdvancedPlayer.getAdvancedPlayer(player).flagId= FlagManager.abbreviations.indexOf(k.toLowerCase());
+                            }
+                        });
+                    }
 
                 }
+
 
                 return true;
             }
