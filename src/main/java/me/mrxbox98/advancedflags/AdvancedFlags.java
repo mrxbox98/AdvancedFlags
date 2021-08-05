@@ -8,6 +8,7 @@ import me.mrxbox98.advancedflags.config.AdvancedConfig;
 import me.mrxbox98.advancedflags.flags.FlagManager;
 import me.mrxbox98.advancedflags.listeners.MainListener;
 import me.mrxbox98.advancedflags.utils.AdvancedPlayer;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -39,6 +40,9 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
         {
             v1_8=false;
         }
+
+        int pluginId=12331;
+        Metrics metrics = new Metrics(this, pluginId);
 
         try {
             setup();
