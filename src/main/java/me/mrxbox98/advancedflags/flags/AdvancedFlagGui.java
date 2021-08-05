@@ -66,20 +66,18 @@ public class AdvancedFlagGui implements Listener, LogHelper {
                         inventory.addItem(createGuiItem(Material.STAINED_GLASS_PANE, ChatColor.RED+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), 14,ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------", ChatColor.AQUA+"You do not have this flag",ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------"));
                     }
                 }
-                /*
-                
-                 */
                 else
                 {
                     if(player.hasPermission("flags."+ FlagManager.flags.get(i).abbr))
                     {
-                        inventory.addItem(createGuiItem(Material.LIME_STAINED_GLASS_PANE, ChatColor.GREEN+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------", ChatColor.AQUA+"Click to select this flag to display",ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------"));
+                        inventory.addItem(createGuiItem(Material.getMaterial("LIME_STAINED_GLASS_PANE"), ChatColor.GREEN+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------", ChatColor.AQUA+"Click to select this flag to display",ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------"));
                     }
                     else
                     {
-                        inventory.addItem(createGuiItem(Material.RED_STAINED_GLASS_PANE, ChatColor.RED+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------", ChatColor.AQUA+"You do not have this flag",ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------"));
+                        inventory.addItem(createGuiItem(Material.getMaterial("RED_STAINED_GLASS_PANE"), ChatColor.RED+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), 14,ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------", ChatColor.AQUA+"You do not have this flag",ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------"));
                     }
                 }
+
 
 
             }
@@ -117,6 +115,8 @@ public class AdvancedFlagGui implements Listener, LogHelper {
         meta.setLore(Arrays.asList(lore));
 
         item.setItemMeta(meta);
+
+
 
         return item;
     }

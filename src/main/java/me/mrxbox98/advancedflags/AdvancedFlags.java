@@ -37,7 +37,7 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
         }
         else
         {
-            v1_8=true;
+            v1_8=false;
         }
 
         try {

@@ -78,6 +78,8 @@ public class CommandHandler {
                 if(strings[0].equalsIgnoreCase("flags"))
                 {
                     AdvancedFlags.getInstance().getServer().getPluginManager().registerEvents(new AdvancedFlagGui((Player) commandSender,1), AdvancedFlags.getInstance());
+
+
                 }
 
                 return true;
