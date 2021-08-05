@@ -56,7 +56,7 @@
                                 <relocation>
                                     <pattern>org.bstats</pattern>
                                     <!-- Replace this with your package! -->
-                                    <shadedPattern>your.package</shadedPattern>
+                                    <shadedPattern>me.mrxbox98</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
