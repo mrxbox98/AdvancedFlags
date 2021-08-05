@@ -275,9 +275,19 @@ public class FlagManager implements LogHelper {
         {
             for(int y=0;y<flag.oh;y++)
             {
-                flag.particles[x][y].display(player.getLocation().add(((double)x-xx)/-10d,((double)y-xy)/-10d+4d,0));
+                flag.particles[x][y].display(player.getLocation().add(((double)x-xx+getXOffset(x))/-10d,((double)y-xy)/-10d+4d,0));
             }
         }
+    }
+
+    /**
+     * For animated flags
+     * @param w the width var
+     * @return the x offset
+     */
+    public static double getXOffset(double w)
+    {
+        return Math.sin(w);
     }
 
 }
