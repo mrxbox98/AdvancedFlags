@@ -10,16 +10,20 @@ public class AdvancedConfig {
 
     public static double heightFromPlayer = 4d;
 
+    public static boolean animate = false;
+
     public static void setupConfig()
     {
         AdvancedFlags.getInstance().getConfig().addDefault("Delay",2);
         AdvancedFlags.getInstance().getConfig().addDefault("GlowingFlag",false);
         AdvancedFlags.getInstance().getConfig().addDefault("HeightFromPlayer",4d);
+        AdvancedFlags.getInstance().getConfig().addDefault("Animate",false);
         AdvancedFlags.getInstance().saveDefaultConfig();
 
         delay=AdvancedFlags.getInstance().getConfig().getInt("Delay");
         glowingFlag=AdvancedFlags.getInstance().getConfig().getBoolean("GlowingFlag");
         heightFromPlayer=AdvancedFlags.getInstance().getConfig().getDouble("HeightFromPlayer");
+        animate=AdvancedFlags.getInstance().getConfig().getBoolean("Animate");
     }
 
 }

@@ -2,6 +2,7 @@ package me.mrxbox98.advancedflags.flags;
 
 import me.mrxbox98.advancedflags.AdvancedFlags;
 import me.mrxbox98.advancedflags.LogHelper;
+import me.mrxbox98.advancedflags.config.AdvancedConfig;
 import org.bukkit.entity.Player;
 
 import java.io.IOException;
@@ -275,7 +276,7 @@ public class FlagManager implements LogHelper {
         {
             for(int y=0;y<flag.oh;y++)
             {
-                flag.particles[x][y].display(player.getLocation().add(((double)x-xx+getXOffset(x))/-10d,((double)y-xy)/-10d+4d,0));
+                flag.particles[x][y].display(player.getLocation().add(((double)x-xx)/-10d,((double)y-xy)/-10d+4d,getXOffset(x)));
             }
         }
     }
@@ -287,7 +288,12 @@ public class FlagManager implements LogHelper {
      */
     public static double getXOffset(double w)
     {
-        return Math.sin(w);
+        if(AdvancedConfig.animate)
+        {
+            return Math.sin(w+(((int)System.currentTimeMillis())/100))/10d;
+        }
+        return 0d;
+
     }
 
 }
