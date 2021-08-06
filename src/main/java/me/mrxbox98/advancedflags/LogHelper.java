@@ -54,7 +54,7 @@ public interface LogHelper {
      * @param player the player to send it to
      * @param str string to send
      */
-    static void send(@NotNull Player player, String str)
+    static void send(Player player, String str)
     {
         player.sendMessage(ChatColor.AQUA.toString()+ChatColor.BOLD+"AdvancedFlags>>"+ChatColor.RESET+str);
     }
