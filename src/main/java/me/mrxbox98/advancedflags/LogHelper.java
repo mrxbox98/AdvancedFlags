@@ -1,6 +1,5 @@
 package me.mrxbox98.advancedflags;
 
-import com.sun.istack.internal.NotNull;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
