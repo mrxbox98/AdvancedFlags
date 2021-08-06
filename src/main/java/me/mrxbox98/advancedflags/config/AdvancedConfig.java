@@ -34,7 +34,8 @@ public class AdvancedConfig {
             AdvancedFlags.getInstance().getConfig().addDefault("Animate",false);
         }
 
-        AdvancedFlags.getInstance().saveDefaultConfig();
+        AdvancedFlags.getInstance().getConfig().options().copyDefaults(true);
+        AdvancedFlags.getInstance().saveConfig();
 
         delay=AdvancedFlags.getInstance().getConfig().getInt("Delay");
         glowingFlag=AdvancedFlags.getInstance().getConfig().getBoolean("GlowingFlag");
