@@ -1,2 +1,4 @@
 Delay: 2
 GlowingFlag: false
+HeightFromPlayer: 4.0
+Animate: false
