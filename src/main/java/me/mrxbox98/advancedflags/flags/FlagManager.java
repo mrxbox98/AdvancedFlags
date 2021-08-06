@@ -250,7 +250,6 @@ public class FlagManager implements LogHelper {
         for (String abbreviation : csv) {
             try {
                 flags.add(new Flag(abbreviation));
-                System.out.println(BLUE_BACKGROUND+"|           "+abbreviation+"           |");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -258,7 +257,6 @@ public class FlagManager implements LogHelper {
         System.out.println(BLUE_BACKGROUND+"↳      FINISHED FLAGS    ↲");
 
         AdvancedFlags.setupFlags();
-
     }
 
     /**
