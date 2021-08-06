@@ -1,6 +1,7 @@
 package me.mrxbox98.advancedflags.commands;
 
 import me.mrxbox98.advancedflags.AdvancedFlags;
+import me.mrxbox98.advancedflags.LogHelper;
 import me.mrxbox98.advancedflags.flags.AdvancedFlagGui;
 import me.mrxbox98.advancedflags.flags.FlagManager;
 import me.mrxbox98.advancedflags.utils.AdvancedPlayer;
@@ -10,9 +11,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.Locale;
-
-public class CommandHandler {
+public class CommandHandler implements LogHelper {
 
     /**
      * The help message
@@ -104,7 +103,12 @@ public class CommandHandler {
                             }
                         });
                     }
+                    return true;
+                }
 
+                if(strings[0].equalsIgnoreCase("version"))
+                {
+                    LogHelper.send(player,"This server is running AdvancedFlags version " + AdvancedFlags.version);
                 }
 
 

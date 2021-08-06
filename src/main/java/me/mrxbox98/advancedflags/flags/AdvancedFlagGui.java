@@ -202,7 +202,7 @@ public class AdvancedFlagGui implements Listener, LogHelper {
         // Using slots click is a best option for your inventory click's
         AdvancedPlayer.getAdvancedPlayer(p).flagId=e.getRawSlot()+(page-1)*45;
 
-        send(p,"Equiped flag id: " +(e.getRawSlot()+(page-1)*45));
+        LogHelper.send(p,"Equiped flag id: " +(e.getRawSlot()+(page-1)*45));
     }
 
     // Cancel dragging in our inventory

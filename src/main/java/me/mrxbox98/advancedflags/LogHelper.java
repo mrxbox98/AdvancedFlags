@@ -1,5 +1,6 @@
 package me.mrxbox98.advancedflags;
 
+import com.sun.istack.internal.NotNull;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -53,7 +54,7 @@ public interface LogHelper {
      * @param player the player to send it to
      * @param str string to send
      */
-    default void send(Player player, String str)
+    static void send(@NotNull Player player, String str)
     {
         player.sendMessage(ChatColor.AQUA.toString()+ChatColor.BOLD+"AdvancedFlags>>"+ChatColor.RESET+str);
     }
