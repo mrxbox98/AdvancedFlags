@@ -35,7 +35,7 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
         instance=this;
 
-        if(getServer().getVersion().contains("1.13"))
+        if(getServer().getVersion().contains("1.13") || getServer().getVersion().contains("1.14") || getServer().getVersion().contains("1.15") || getServer().getVersion().contains("1.16") || getServer().getVersion().contains("1.17"))
         {
             v1_8=false;
         }
