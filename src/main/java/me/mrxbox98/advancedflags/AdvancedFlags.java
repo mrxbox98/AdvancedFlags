@@ -9,6 +9,7 @@ import me.mrxbox98.advancedflags.flags.FlagManager;
 import me.mrxbox98.advancedflags.listeners.MainListener;
 import me.mrxbox98.advancedflags.utils.AdvancedPlayer;
 import org.bstats.bukkit.Metrics;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -26,7 +27,7 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
     public static boolean v1_8 =true;
 
-    public static final String version = "1.0.4";
+    public static final String version = "1.0.5";
 
     public static HashMap<String, String> aliases = new HashMap<>();
 
@@ -103,6 +104,25 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
     }
 
     /**
+     * <br>Rotates the flags that are on the player<br>
+     */
+    public static void setupRotate()
+    {
+        Bukkit.getScheduler().runTaskTimerAsynchronously(AdvancedFlags.getInstance(), new Runnable() {
+            @Override
+            public void run() {
+                for(Player player: instance.getServer().getOnlinePlayers())
+                {
+                    if(AdvancedPlayer.getAdvancedPlayer(player).rotate)
+                    {
+                        AdvancedPlayer.getAdvancedPlayer(player).advance();
+                    }
+                }
+            }
+        },0,1000);
+    }
+
+    /**
      * Sets up the plugin
      * @throws IOException File error
      */
@@ -111,6 +131,8 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
         FlagManager.setup();
         setupFlags();
+
+        setupRotate();
     }
 
 

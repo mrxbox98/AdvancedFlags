@@ -1,36 +1,47 @@
 package me.mrxbox98.advancedflags.utils;
 
+import me.mrxbox98.advancedflags.flags.FlagManager;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class AdvancedPlayer {
 
     public static ArrayList<AdvancedPlayer> advancedPlayers = new ArrayList<>();
 
-    public UUID uuid;
-
     public Player player;
+
+    public boolean rotate=false;
 
     public int flagId=-1;
 
     public AdvancedPlayer(Player player)
     {
         this.player=player;
-        this.uuid=player.getUniqueId();
     }
 
     public static AdvancedPlayer getAdvancedPlayer(Player player)
     {
         for(AdvancedPlayer advancedPlayer: advancedPlayers)
         {
-            if(advancedPlayer.uuid.equals(player.getUniqueId()))
+            if(advancedPlayer.player.equals(player))
             {
                 return advancedPlayer;
             }
         }
         return null;
+    }
+
+    public void advance()
+    {
+        if(flagId< FlagManager.flags.size()-1)
+        {
+            flagId++;
+        }
+        else
+        {
+            flagId=0;
+        }
     }
 
 }

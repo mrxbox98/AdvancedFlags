@@ -109,6 +109,15 @@ public class CommandHandler implements LogHelper {
                 if(strings[0].equalsIgnoreCase("version"))
                 {
                     LogHelper.send(player,"This server is running AdvancedFlags version " + AdvancedFlags.version);
+                    return true;
+                }
+
+                if(strings[0].equalsIgnoreCase("rotate"))
+                {
+                    if(player.hasPermission("flags.rotate"))
+                    {
+                        AdvancedPlayer.getAdvancedPlayer(player).rotate=!AdvancedPlayer.getAdvancedPlayer(player).rotate;
+                    }
                 }
 
 
