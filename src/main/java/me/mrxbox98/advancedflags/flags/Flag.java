@@ -31,7 +31,7 @@ public class Flag {
 
         if(this.getClass().getResource("/flags/"+abbr.toLowerCase()+".png")==null)
         {
-            image=ImageIO.read(new File(AdvancedFlags.getInstance().getDataFolder().getAbsolutePath()+abbr.toLowerCase()+".png"));
+            image=ImageIO.read(new File(AdvancedFlags.getInstance().getDataFolder().getAbsolutePath()+"/"+abbr.toLowerCase()+".png"));
         }
         else
         {
