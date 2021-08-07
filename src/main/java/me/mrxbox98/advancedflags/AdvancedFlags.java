@@ -5,6 +5,7 @@ import com.github.fierioziy.particlenativeapi.api.Particles_1_8;
 import com.github.fierioziy.particlenativeapi.core.ParticleNativeCore;
 import me.mrxbox98.advancedflags.commands.CommandHandler;
 import me.mrxbox98.advancedflags.config.AdvancedConfig;
+import me.mrxbox98.advancedflags.flags.CustomFlags;
 import me.mrxbox98.advancedflags.flags.FlagManager;
 import me.mrxbox98.advancedflags.listeners.MainListener;
 import me.mrxbox98.advancedflags.utils.AdvancedPlayer;
@@ -46,6 +47,8 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
         int pluginId=12331;
         Metrics metrics = new Metrics(this, pluginId);
+
+        CustomFlags.setupCustomFlags();
 
         try {
             setup();

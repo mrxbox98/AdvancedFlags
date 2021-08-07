@@ -1,10 +1,12 @@
 package me.mrxbox98.advancedflags.flags;
 
+import me.mrxbox98.advancedflags.AdvancedFlags;
 import me.mrxbox98.advancedflags.particles.Particle;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 public class Flag {
@@ -27,7 +29,17 @@ public class Flag {
 
         BufferedImage image;
 
-        image=ImageIO.read(this.getClass().getResource("/flags/"+abbr.toLowerCase()+".png"));
+        if(this.getClass().getResource("/flags/"+abbr.toLowerCase()+".png")==null)
+        {
+            image=ImageIO.read(new File(AdvancedFlags.getInstance().getDataFolder().getAbsolutePath()+abbr.toLowerCase()+".png"));
+        }
+        else
+        {
+            image=ImageIO.read(this.getClass().getResource("/flags/"+abbr.toLowerCase()+".png"));
+        }
+
+
+
 
         ow=image.getWidth();
 
