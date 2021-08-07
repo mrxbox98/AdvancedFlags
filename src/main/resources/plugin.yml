@@ -3,7 +3,6 @@ version: 1.0.5
 main: me.mrxbox98.advancedflags.AdvancedFlags
 authors: [ Mrxbox98 ]
 description: Choose any flag to display over your head.
-api-version: 1.8.8
 commands:
   af:
     description: Main AdvancedFlags command.
