@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FlagManager implements LogHelper {
 
@@ -243,11 +244,13 @@ public class FlagManager implements LogHelper {
     public static void setup()
     {
 
+        abbreviations.addAll(Arrays.asList(csv));
+
         AdvancedFlags.getInstance().getLogger().info(abbreviations.toString());
 
         System.out.println(BLUE_BACKGROUND+"↱STARTED FLAG DOWNLOADING↰");
 
-        for (String abbreviation : csv) {
+        for (String abbreviation : abbreviations) {
             try {
                 flags.add(new Flag(abbreviation));
             } catch (IOException e) {
