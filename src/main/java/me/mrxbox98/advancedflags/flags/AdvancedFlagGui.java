@@ -200,9 +200,19 @@ public class AdvancedFlagGui implements Listener, LogHelper {
         final Player p = (Player) e.getWhoClicked();
 
         // Using slots click is a best option for your inventory click's
-        AdvancedPlayer.getAdvancedPlayer(p).flagId=e.getRawSlot()+(page-1)*45;
+        if(AdvancedPlayer.getAdvancedPlayer(p).flagId==e.getRawSlot()+(page-1)*45)
+        {
+            AdvancedPlayer.getAdvancedPlayer(p).flagId=-1;
+            LogHelper.send(p, "Removed your current flag.");
+        }
+        else
+        {
+            AdvancedPlayer.getAdvancedPlayer(p).flagId=e.getRawSlot()+(page-1)*45;
+            LogHelper.send(p,"Equiped flag id: " +(e.getRawSlot()+(page-1)*45));
+        }
 
-        LogHelper.send(p,"Equiped flag id: " +(e.getRawSlot()+(page-1)*45));
+
+
     }
 
     // Cancel dragging in our inventory
