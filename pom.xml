@@ -27,7 +27,6 @@
                 <configuration>
                     <source>8</source>
                     <target>8</target>
-                    <failOnError>false</failOnError>
                 </configuration>
             </plugin>
             <plugin>
