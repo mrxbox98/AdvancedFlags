@@ -55,7 +55,7 @@ public class AdvancedFlagGui implements Listener, LogHelper {
         {
             if(i< FlagManager.flags.size())
             {
-                if(AdvancedFlags.v1_8)
+                if(Material.getMaterial("LIME_STAINED_GLASS_PANE")==null || Material.getMaterial("RED_STAINED_GLASS_PANE")==null)
                 {
                     if(player.hasPermission("flags."+ FlagManager.flags.get(i).abbr))
                     {
