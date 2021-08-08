@@ -18,7 +18,7 @@ public class CommandHandler implements LogHelper {
      */
     public static String helpMessage = ChatColor.AQUA.toString()+ ChatColor.BOLD +"AdvancedFlags Version:1.0.0\n"+
             "/af help - "+ChatColor.WHITE+"Main AdvancedCosmetics help command\n"+
-            ChatColor.AQUA+"/af flags = "+ChatColor.WHITE+"Select your flag";
+            ChatColor.BOLD.toString()+ChatColor.AQUA+"/af flags - "+ChatColor.WHITE+"Select your flag";
 
 
     /**

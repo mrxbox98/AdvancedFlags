@@ -15,6 +15,11 @@ public class CustomFlags {
 
         File[] files = data.listFiles();
 
+        if(files==null)
+        {
+            return;
+        }
+
         for(File file: files)
         {
             if(file.getName().endsWith(".png"))

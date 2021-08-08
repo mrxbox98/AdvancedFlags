@@ -248,7 +248,7 @@ public class FlagManager implements LogHelper {
 
         AdvancedFlags.getInstance().getLogger().info(abbreviations.toString());
 
-        System.out.println(BLUE_BACKGROUND+"↱STARTED FLAG DOWNLOADING↰");
+        System.out.println(BLUE_BACKGROUND+"↱STARTED FLAG DOWNLOADING↰"+RESET);
 
         for (String abbreviation : abbreviations) {
             try {
@@ -257,7 +257,7 @@ public class FlagManager implements LogHelper {
                 e.printStackTrace();
             }
         }
-        System.out.println(BLUE_BACKGROUND+"↳      FINISHED FLAGS    ↲");
+        System.out.println(BLUE_BACKGROUND+"↳      FINISHED FLAGS    ↲"+RESET);
 
         AdvancedFlags.setupFlags();
     }
