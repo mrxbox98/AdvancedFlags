@@ -2,10 +2,12 @@ package me.mrxbox98.advancedflags.flags;
 
 import me.mrxbox98.advancedflags.AdvancedFlags;
 import me.mrxbox98.advancedflags.LogHelper;
+import me.mrxbox98.advancedflags.config.AdvancedConfig;
 import me.mrxbox98.advancedflags.utils.AdvancedPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -114,6 +116,11 @@ public class AdvancedFlagGui implements Listener, LogHelper {
         // Set the lore of the item
         meta.setLore(Arrays.asList(lore));
 
+        if(AdvancedConfig.glowingFlag)
+        {
+            meta.addEnchant(Enchantment.LUCK,-1,true);
+        }
+
         item.setItemMeta(meta);
 
 
@@ -140,6 +147,11 @@ public class AdvancedFlagGui implements Listener, LogHelper {
 
         // Set the lore of the item
         meta.setLore(Arrays.asList(lore));
+
+        if(AdvancedConfig.glowingFlag)
+        {
+            meta.addEnchant(Enchantment.LUCK,-1,true);
+        }
 
         item.setItemMeta(meta);
 
