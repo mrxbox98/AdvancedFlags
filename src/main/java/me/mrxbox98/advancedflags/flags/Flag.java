@@ -23,8 +23,6 @@ public class Flag {
 
     public Flag(String abbreviation) throws IOException {
 
-        oh=20;
-
         abbr=abbreviation;
 
         BufferedImage image;
@@ -39,7 +37,7 @@ public class Flag {
         }
 
 
-
+        oh=image.getHeight();
 
         ow=image.getWidth();
 
