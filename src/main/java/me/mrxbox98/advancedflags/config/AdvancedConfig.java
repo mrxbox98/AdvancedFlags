@@ -12,6 +12,8 @@ public class AdvancedConfig {
 
     public static boolean animate = false;
 
+    public static double renderDistance = 30.0d;
+
     public static void setupConfig()
     {
         if(!AdvancedFlags.getInstance().getConfig().contains("Delay"))
@@ -34,6 +36,11 @@ public class AdvancedConfig {
             AdvancedFlags.getInstance().getConfig().addDefault("Animate",false);
         }
 
+        if(!AdvancedFlags.getInstance().getConfig().contains("RenderDistance"))
+        {
+            AdvancedFlags.getInstance().getConfig().addDefault("RenderDistance",30D);
+        }
+
         AdvancedFlags.getInstance().getConfig().options().copyDefaults(true);
         AdvancedFlags.getInstance().saveConfig();
 
@@ -41,6 +48,7 @@ public class AdvancedConfig {
         glowingFlag=AdvancedFlags.getInstance().getConfig().getBoolean("GlowingFlag");
         heightFromPlayer=AdvancedFlags.getInstance().getConfig().getDouble("HeightFromPlayer");
         animate=AdvancedFlags.getInstance().getConfig().getBoolean("Animate");
+        renderDistance=AdvancedFlags.getInstance().getConfig().getDouble("RenderDistance");
     }
 
 }
