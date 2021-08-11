@@ -1,6 +1,7 @@
 package me.mrxbox98.advancedflags.config;
 
 import me.mrxbox98.advancedflags.AdvancedFlags;
+import org.bukkit.configuration.file.FileConfiguration;
 
 public class AdvancedConfig {
 
@@ -14,41 +15,59 @@ public class AdvancedConfig {
 
     public static double renderDistance = 30.0d;
 
+    public static boolean locationFlag = false;
+
+    public static String ipStackApiKey = "";
+
     public static void setupConfig()
     {
-        if(!AdvancedFlags.getInstance().getConfig().contains("Delay"))
+        FileConfiguration config = AdvancedFlags.getInstance().getConfig();
+
+        if(!config.contains("Delay"))
         {
-            AdvancedFlags.getInstance().getConfig().addDefault("Delay",2);
+            config.addDefault("Delay",2);
         }
 
-        if(!AdvancedFlags.getInstance().getConfig().contains("GlowingFlag"))
+        if(!config.contains("GlowingFlag"))
         {
-            AdvancedFlags.getInstance().getConfig().addDefault("GlowingFlag",false);
+            config.addDefault("GlowingFlag",false);
         }
 
-        if(!AdvancedFlags.getInstance().getConfig().contains("HeightFromPlayer"))
+        if(!config.contains("HeightFromPlayer"))
         {
-            AdvancedFlags.getInstance().getConfig().addDefault("HeightFromPlayer",4d);
+            config.addDefault("HeightFromPlayer",4d);
         }
 
-        if(!AdvancedFlags.getInstance().getConfig().contains("Animate"))
+        if(!config.contains("Animate"))
         {
-            AdvancedFlags.getInstance().getConfig().addDefault("Animate",false);
+            config.addDefault("Animate",false);
         }
 
-        if(!AdvancedFlags.getInstance().getConfig().contains("RenderDistance"))
+        if(!config.contains("RenderDistance"))
         {
-            AdvancedFlags.getInstance().getConfig().addDefault("RenderDistance",30D);
+            config.addDefault("RenderDistance",30D);
         }
 
-        AdvancedFlags.getInstance().getConfig().options().copyDefaults(true);
+        if(!config.contains("LocationFlag"))
+        {
+            config.addDefault("LocationFlag",false);
+        }
+
+        if(!config.contains("IpStackApiKey"))
+        {
+            config.addDefault("IpStackApiKey","");
+        }
+
+        config.options().copyDefaults(true);
         AdvancedFlags.getInstance().saveConfig();
 
-        delay=AdvancedFlags.getInstance().getConfig().getInt("Delay");
-        glowingFlag=AdvancedFlags.getInstance().getConfig().getBoolean("GlowingFlag");
-        heightFromPlayer=AdvancedFlags.getInstance().getConfig().getDouble("HeightFromPlayer");
-        animate=AdvancedFlags.getInstance().getConfig().getBoolean("Animate");
-        renderDistance=AdvancedFlags.getInstance().getConfig().getDouble("RenderDistance");
+        delay=config.getInt("Delay");
+        glowingFlag=config.getBoolean("GlowingFlag");
+        heightFromPlayer=config.getDouble("HeightFromPlayer");
+        animate=config.getBoolean("Animate");
+        renderDistance=config.getDouble("RenderDistance");
+        locationFlag=config.getBoolean("LocationFlag");
+        ipStackApiKey=config.getString("IpStackApiKey");
     }
 
 }
