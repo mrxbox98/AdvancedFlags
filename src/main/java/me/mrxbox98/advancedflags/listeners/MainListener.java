@@ -20,6 +20,7 @@ public class MainListener implements Listener {
         {
             String ip = event.getPlayer().getAddress().getHostString();
             String country = IpHelper.getTwoLetterCode(ip);
+            System.out.println(country);
             AdvancedPlayer.getAdvancedPlayer(event.getPlayer()).flagId=FlagManager.abbreviations.indexOf(country);
         }
     }

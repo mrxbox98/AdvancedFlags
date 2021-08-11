@@ -12,9 +12,10 @@ public class IpHelper {
     {
         try
         {
+			System.out.println(ip);
             String url = "http://api.ipstack.com/" + ip + "?access_key=" + AdvancedConfig.ipStackApiKey;
             String raw = readJsonFromUrl(url);
-            int start = raw.indexOf("country+code")+16;
+            int start = raw.indexOf("country_code")+15;
             int end = start+2;
             return raw.substring(start,end);
         }
