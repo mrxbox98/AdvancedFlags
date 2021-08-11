@@ -12,7 +12,6 @@ public class IpHelper {
     {
         try
         {
-			System.out.println(ip);
             String url = "http://api.ipstack.com/" + ip + "?access_key=" + AdvancedConfig.ipStackApiKey;
             String raw = readJsonFromUrl(url);
             int start = raw.indexOf("country_code")+15;
