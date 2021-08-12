@@ -28,11 +28,13 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
     public static boolean v1_8 =true;
 
-    public static final String version = "1.1.4";
+    public static final String version = "1.1.5";
 
     public static HashMap<String, String> aliases = new HashMap<>();
 
     public void onEnable() {
+
+        LogHelper.debug("Started plugin.");
 
         instance=this;
 
@@ -51,6 +53,7 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
         CustomFlags.setupCustomFlags();
 
         try {
+            LogHelper.debug("Setting up plugin.");
             setup();
         } catch (IOException e) {
             e.printStackTrace();

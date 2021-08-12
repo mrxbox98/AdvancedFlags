@@ -1,5 +1,6 @@
 package me.mrxbox98.advancedflags;
 
+import me.mrxbox98.advancedflags.config.AdvancedConfig;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -58,4 +59,11 @@ public interface LogHelper {
         player.sendMessage(ChatColor.AQUA.toString()+ChatColor.BOLD+"AdvancedFlags>>"+ChatColor.RESET+str);
     }
 
+    static void debug(String msg)
+    {
+        if(AdvancedConfig.debug)
+        {
+            System.out.println("AdvancedFlags DEBUG: " + msg);
+        }
+    }
 }

@@ -19,6 +19,8 @@ public class AdvancedConfig {
 
     public static String ipStackApiKey = "";
 
+    public static boolean debug=false;
+
     public static void setupConfig()
     {
         FileConfiguration config = AdvancedFlags.getInstance().getConfig();
@@ -58,6 +60,11 @@ public class AdvancedConfig {
             config.addDefault("IpStackApiKey","");
         }
 
+        if(!config.contains("Debug"))
+        {
+            config.addDefault("Debug",false);
+        }
+
         config.options().copyDefaults(true);
         AdvancedFlags.getInstance().saveConfig();
 
@@ -68,6 +75,7 @@ public class AdvancedConfig {
         renderDistance=config.getDouble("RenderDistance");
         locationFlag=config.getBoolean("LocationFlag");
         ipStackApiKey=config.getString("IpStackApiKey");
+        debug=config.getBoolean("Default");
     }
 
 }

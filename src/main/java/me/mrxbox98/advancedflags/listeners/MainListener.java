@@ -1,5 +1,6 @@
 package me.mrxbox98.advancedflags.listeners;
 
+import me.mrxbox98.advancedflags.LogHelper;
 import me.mrxbox98.advancedflags.config.AdvancedConfig;
 import me.mrxbox98.advancedflags.flags.FlagManager;
 import me.mrxbox98.advancedflags.utils.AdvancedPlayer;
@@ -21,6 +22,10 @@ public class MainListener implements Listener {
             String ip = event.getPlayer().getAddress().getHostString();
             String country = IpHelper.getTwoLetterCode(ip);
             AdvancedPlayer.getAdvancedPlayer(event.getPlayer()).flagId=FlagManager.abbreviations.indexOf(country);
+            if(FlagManager.abbreviations.indexOf(country)==-1)
+            {
+                LogHelper.debug("There was an error: report on GitHub with this info" + "\n" + country);
+            }
         }
     }
 
