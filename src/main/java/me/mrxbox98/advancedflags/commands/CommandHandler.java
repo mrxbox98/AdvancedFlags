@@ -118,6 +118,13 @@ public class CommandHandler implements LogHelper {
                     {
                         AdvancedPlayer.getAdvancedPlayer(player).rotate=!AdvancedPlayer.getAdvancedPlayer(player).rotate;
                     }
+                    return true;
+                }
+
+                if(strings[0].equalsIgnoreCase("hide"))
+                {
+                    AdvancedPlayer.getAdvancedPlayer(player).hidden=!AdvancedPlayer.getAdvancedPlayer(player).hidden;
+                    return true;
                 }
 
 

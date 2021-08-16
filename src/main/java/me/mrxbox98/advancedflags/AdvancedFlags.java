@@ -2,6 +2,7 @@ package me.mrxbox98.advancedflags;
 
 import com.github.fierioziy.particlenativeapi.api.ParticleNativeAPI;
 import com.github.fierioziy.particlenativeapi.api.Particles_1_8;
+import com.github.fierioziy.particlenativeapi.api.utils.PlayerPredicate;
 import com.github.fierioziy.particlenativeapi.core.ParticleNativeCore;
 import me.mrxbox98.advancedflags.commands.CommandHandler;
 import me.mrxbox98.advancedflags.config.AdvancedConfig;
@@ -9,6 +10,7 @@ import me.mrxbox98.advancedflags.flags.CustomFlags;
 import me.mrxbox98.advancedflags.flags.FlagManager;
 import me.mrxbox98.advancedflags.listeners.MainListener;
 import me.mrxbox98.advancedflags.utils.AdvancedPlayer;
+import me.mrxbox98.advancedflags.utils.AdvancedPredicate;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -28,9 +30,11 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
     public static boolean v1_8 =true;
 
-    public static final String version = "1.1.5";
+    public static final String version = "1.1.6";
 
     public static HashMap<String, String> aliases = new HashMap<>();
+
+    public static PlayerPredicate playerPredicate = new AdvancedPredicate();
 
     public void onEnable() {
 

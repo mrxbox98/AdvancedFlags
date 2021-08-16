@@ -32,7 +32,7 @@ public class Particle {
             @Override
             public void run() {
                 Object packet = AdvancedFlags.particles.REDSTONE().packetColored(true,location,org.bukkit.Color.fromRGB(color.getRed(),color.getGreen(),color.getBlue()));
-                AdvancedFlags.particles.sendPacket(location, 30D, packet);
+                AdvancedFlags.particles.sendPacketIf(location, 30D, packet, AdvancedFlags.playerPredicate);
             }
         });
 

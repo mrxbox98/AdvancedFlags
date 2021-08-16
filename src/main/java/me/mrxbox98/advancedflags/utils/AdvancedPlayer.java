@@ -15,6 +15,8 @@ public class AdvancedPlayer {
 
     public int flagId=-1;
 
+    public boolean hidden = false;
+
     public AdvancedPlayer(Player player)
     {
         this.player=player;
