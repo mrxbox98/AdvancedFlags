@@ -110,6 +110,7 @@ public class FlagManager implements LogHelper {
             "HN",
             "HK",
             "HU",
+            "IR",
             "IS",
             "IN",
             "ID",
