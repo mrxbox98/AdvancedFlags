@@ -4,8 +4,8 @@ import me.mrxbox98.advancedflags.AdvancedFlags;
 import me.mrxbox98.advancedflags.LogHelper;
 import me.mrxbox98.advancedflags.config.AdvancedConfig;
 import me.mrxbox98.advancedflags.utils.AdvancedPlayer;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.HumanEntity;
@@ -61,11 +61,11 @@ public class AdvancedFlagGui implements Listener, LogHelper {
                 {
                     if(player.hasPermission("flags."+ FlagManager.flags.get(i).abbr))
                     {
-                        inventory.addItem(createGuiItem(Material.STAINED_GLASS_PANE, ChatColor.GREEN+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), 5,ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------", ChatColor.AQUA+"Click to select this flag to display",ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------"));
+                        inventory.addItem(createGuiItem(Material.getMaterial("STAINED_GLASS_PANE"), ChatColor.GREEN+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), 5,generateMeta(FlagManager.flags.get(i))));
                     }
                     else
                     {
-                        inventory.addItem(createGuiItem(Material.STAINED_GLASS_PANE, ChatColor.RED+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), 14,ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------", ChatColor.AQUA+"You do not have this flag",ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------"));
+                        inventory.addItem(createGuiItem(Material.getMaterial("STAINED_GLASS_PANE"), ChatColor.RED+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), 14,ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------", ChatColor.AQUA+"You do not have this flag",ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------"));
                     }
                 }
                 else
@@ -122,8 +122,6 @@ public class AdvancedFlagGui implements Listener, LogHelper {
         }
 
         item.setItemMeta(meta);
-
-
 
         return item;
     }
@@ -233,6 +231,28 @@ public class AdvancedFlagGui implements Listener, LogHelper {
         if (e.getInventory().equals(inventory)) {
             e.setCancelled(true);
         }
+    }
+
+    public String[] generateMeta(Flag flag)
+    {
+        if(!AdvancedConfig.flagPreview)
+        {
+            String[] strings = new String[3];
+            strings[0]=ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------";
+            strings[1]= ChatColor.AQUA+"Click to select this flag to display";
+            strings[2]=ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------";
+            return strings;
+        }
+
+        String[] strings = new String[flag.oh];
+        for(int y=0;y<strings.length;y++)
+        {
+            for(int x=0;x<flag.ow;x++)
+            {
+                strings[y]+=String.format("#%02X%02X%02X", flag.particles[x][y].color.getRed(), flag.particles[x][y].color.getGreen(), flag.particles[x][y].color.getBlue());
+            }
+        }
+        return strings;
     }
 
 }

@@ -28,9 +28,9 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
     public static Particles_1_8 particles;
 
-    public static boolean v1_8 =true;
+    public static String versionMC;
 
-    public static final String version = "1.1.7";
+    public static final String version = "1.1.8";
 
     public static HashMap<String, String> aliases = new HashMap<>();
 
@@ -42,14 +42,7 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
         instance=this;
 
-        if(getServer().getVersion().contains("1.13") || getServer().getVersion().contains("1.14") || getServer().getVersion().contains("1.15") || getServer().getVersion().contains("1.16") || getServer().getVersion().contains("1.17"))
-        {
-            v1_8=false;
-        }
-        else
-        {
-            v1_8=true;
-        }
+
 
         int pluginId=12331;
         Metrics metrics = new Metrics(this, pluginId);
@@ -89,6 +82,20 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
     }
 
+    public void setupVersion()
+    {
+        if(getServer().getVersion().contains("1.8")) {versionMC="1.8";}
+        if(getServer().getVersion().contains("1.9")) {versionMC="1.9";}
+        if(getServer().getVersion().contains("1.10")) {versionMC="1.10";}
+        if(getServer().getVersion().contains("1.11")) {versionMC="1.11";}
+        if(getServer().getVersion().contains("1.12")) {versionMC="1.12";}
+        if(getServer().getVersion().contains("1.13")) {versionMC="1.13";}
+        if(getServer().getVersion().contains("1.14")) {versionMC="1.14";}
+        if(getServer().getVersion().contains("1.15")) {versionMC="1.15";}
+        if(getServer().getVersion().contains("1.16")) {versionMC="1.16";}
+        if(getServer().getVersion().contains("1.17")) {versionMC="1.17";}
+    }
+
     /**
      * <br>Sets up all of the flags<br>
      */
@@ -123,7 +130,7 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
             public void run() {
                 for(Player player: instance.getServer().getOnlinePlayers())
                 {
-                    if(AdvancedPlayer.getAdvancedPlayer(player).rotate)
+                    if(AdvancedPlayer.getAdvancedPlayer(player)!=null && AdvancedPlayer.getAdvancedPlayer(player).rotate)
                     {
                         AdvancedPlayer.getAdvancedPlayer(player).advance();
                     }
@@ -136,13 +143,31 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
      * Sets up the plugin
      * @throws IOException File error
      */
-    public static void setup() throws IOException {
+    public void setup() throws IOException {
         AdvancedConfig.setupConfig();
+
+        setupVersion();
 
         FlagManager.setup();
         setupFlags();
 
         setupRotate();
+    }
+
+    public void setupConfig()
+    {
+        if(AdvancedConfig.flagPreview)
+        {
+            if(versionMC.equals("1.16") || versionMC.equals("1.17"))
+            {
+
+            }
+            else
+            {
+                System.out.println("AdvancedFlags preview does not yet work on older than 1.16 versions of Minecraft");
+                AdvancedConfig.flagPreview=false;
+            }
+        }
     }
 
 

@@ -21,6 +21,8 @@ public class AdvancedConfig {
 
     public static boolean debug=false;
 
+    public static boolean flagPreview=false;
+
     public static void setupConfig()
     {
         FileConfiguration config = AdvancedFlags.getInstance().getConfig();
@@ -65,6 +67,11 @@ public class AdvancedConfig {
             config.addDefault("Debug",false);
         }
 
+        if(!config.contains("FlagPreview"))
+        {
+            config.addDefault("FlagPreview",false);
+        }
+
         config.options().copyDefaults(true);
         AdvancedFlags.getInstance().saveConfig();
 
@@ -76,6 +83,7 @@ public class AdvancedConfig {
         locationFlag=config.getBoolean("LocationFlag");
         ipStackApiKey=config.getString("IpStackApiKey");
         debug=config.getBoolean("Default");
+        flagPreview=config.getBoolean("FlagPreview");
     }
 
 }

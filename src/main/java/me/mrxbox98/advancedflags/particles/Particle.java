@@ -11,7 +11,7 @@ public class Particle {
     /**
      * The color of the particle
      */
-    Color color;
+    public Color color;
 
     /**
      * Creates a new particle with a color
