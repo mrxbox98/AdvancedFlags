@@ -76,7 +76,7 @@ public class AdvancedFlagGui implements Listener, LogHelper {
                 {
                     if(player.hasPermission("flags."+ FlagManager.flags.get(i).abbr))
                     {
-                        inventory.addItem(createGuiItem(Material.getMaterial("LIME_STAINED_GLASS_PANE"), ChatColor.GREEN+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------", ChatColor.AQUA+"Click to select this flag to display",ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------"));
+                        inventory.addItem(createGuiItem(Material.getMaterial("LIME_STAINED_GLASS_PANE"), ChatColor.GREEN+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr),generateMeta(FlagManager.flags.get(i))));
                     }
                     else
                     {
@@ -180,7 +180,7 @@ public class AdvancedFlagGui implements Listener, LogHelper {
 
         final ItemStack clickedItem = e.getCurrentItem();
 
-        if(clickedItem.getType()==Material.AIR)
+        if(clickedItem.getType()==null || clickedItem.getType()==Material.AIR)
         {
             return;
         }
@@ -237,6 +237,11 @@ public class AdvancedFlagGui implements Listener, LogHelper {
         }
     }
 
+    /**
+     * Generates meta on all versions using reflection
+     * @param flag the flag to use
+     * @return the meta
+     */
     public String[] generateMeta(Flag flag)
     {
         if(!AdvancedConfig.flagPreview)
@@ -248,7 +253,7 @@ public class AdvancedFlagGui implements Listener, LogHelper {
             return strings;
         }
 
-        String[] strings = new String[flag.oh];
+        String[] strings = new String[flag.particles[0].length];
 
         try
         {
@@ -260,11 +265,15 @@ public class AdvancedFlagGui implements Listener, LogHelper {
 
             for(int y=0;y<strings.length;y++)
             {
-                for(int x=0;x<flag.ow;x++)
+                for(int x=0;x<flag.particles.length;x++)
                 {
                     Object obj = method.invoke(this,flag.particles[x][y].color);
                     ChatColor chatColor = (ChatColor)obj;
                     strings[y]+=chatColor+"⬛";
+                }
+                if(strings[y].contains("null"))
+                {
+                    strings[y]=strings[y].substring(4);
                 }
             }
             return strings;
