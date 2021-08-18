@@ -1,6 +1,5 @@
 package me.mrxbox98.advancedflags.flags;
 
-import com.google.common.base.Preconditions;
 import me.mrxbox98.advancedflags.AdvancedFlags;
 import me.mrxbox98.advancedflags.LogHelper;
 import me.mrxbox98.advancedflags.config.AdvancedConfig;
@@ -22,7 +21,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.awt.*;
 import java.lang.reflect.Method;
 import java.util.Arrays;
-import java.util.Locale;
 
 public class AdvancedFlagGui implements Listener, LogHelper {
 
@@ -65,7 +63,7 @@ public class AdvancedFlagGui implements Listener, LogHelper {
                 {
                     if(player.hasPermission("flags."+ FlagManager.flags.get(i).abbr))
                     {
-                        inventory.addItem(createGuiItem(Material.getMaterial("STAINED_GLASS_PANE"), ChatColor.GREEN+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), 5,generateMeta(FlagManager.flags.get(i))));
+                        inventory.addItem(createGuiItem(Material.getMaterial("STAINED_GLASS_PANE"), ChatColor.GREEN+ChatColor.BOLD.toString()+generateDashes(FlagManager.flags.get(i)), 5,generateMeta(FlagManager.flags.get(i))));
                     }
                     else
                     {
@@ -265,16 +263,18 @@ public class AdvancedFlagGui implements Listener, LogHelper {
 
             for(int y=0;y<strings.length;y++)
             {
+                strings[y]+=ChatColor.RESET+ChatColor.BOLD.toString()+"|";
                 for(int x=0;x<flag.particles.length;x++)
                 {
                     Object obj = method.invoke(this,flag.particles[x][y].color);
                     ChatColor chatColor = (ChatColor)obj;
-                    strings[y]+=chatColor+"⬛";
+                    strings[y]+=chatColor + ChatColor.BOLD.toString() +"█";
                 }
                 if(strings[y].contains("null"))
                 {
-                    strings[y]=strings[y].substring(4);
+                    strings[y]=strings[y].substring(0,strings[y].indexOf("null"))+strings[y].substring(strings[y].indexOf("null")+4);
                 }
+                strings[y]+=ChatColor.RESET+ChatColor.BOLD.toString()+ ChatColor.WHITE +"|";
             }
             return strings;
         }
@@ -282,11 +282,21 @@ public class AdvancedFlagGui implements Listener, LogHelper {
         {
             return new String[]{"MASSIVE PROBLEM REPORT ON GITHUB"};
         }
-
-
-
     }
 
+    public String generateDashes(Flag flag)
+    {
+        String str = "";
+        for(int i=0;i<flag.ow;i++)
+        {
+            str+="-";
+            if(i*2== flag.ow)
+            {
+                str+=AdvancedFlags.aliases.get(flag.abbr.toUpperCase());
+            }
+        }
+        return str;
+    }
 
 
 }

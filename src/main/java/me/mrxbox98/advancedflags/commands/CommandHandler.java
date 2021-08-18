@@ -128,6 +128,13 @@ public class CommandHandler implements LogHelper {
                 }
 
 
+                if(strings[0].equalsIgnoreCase("none"))
+                {
+                    AdvancedPlayer.getAdvancedPlayer(player).flagId=-1;
+                    return true;
+                }
+
+
                 return true;
             }
         });
