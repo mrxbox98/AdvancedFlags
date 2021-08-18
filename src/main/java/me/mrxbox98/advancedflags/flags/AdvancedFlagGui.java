@@ -1,5 +1,6 @@
 package me.mrxbox98.advancedflags.flags;
 
+import com.google.common.base.Preconditions;
 import me.mrxbox98.advancedflags.AdvancedFlags;
 import me.mrxbox98.advancedflags.LogHelper;
 import me.mrxbox98.advancedflags.config.AdvancedConfig;
@@ -18,7 +19,10 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.awt.*;
+import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.Locale;
 
 public class AdvancedFlagGui implements Listener, LogHelper {
 
@@ -245,14 +249,35 @@ public class AdvancedFlagGui implements Listener, LogHelper {
         }
 
         String[] strings = new String[flag.oh];
-        for(int y=0;y<strings.length;y++)
+
+        try
         {
-            for(int x=0;x<flag.ow;x++)
+            Class cls = Class.forName("net.md_5.bungee.api.ChatColor");
+
+            Method method = cls.getMethod("of", Color.class);
+
+
+
+            for(int y=0;y<strings.length;y++)
             {
-                strings[y]+=String.format("#%02X%02X%02X", flag.particles[x][y].color.getRed(), flag.particles[x][y].color.getGreen(), flag.particles[x][y].color.getBlue());
+                for(int x=0;x<flag.ow;x++)
+                {
+                    Object obj = method.invoke(this,flag.particles[x][y].color);
+                    ChatColor chatColor = (ChatColor)obj;
+                    strings[y]+=chatColor+"⬛";
+                }
             }
+            return strings;
         }
-        return strings;
+        catch(Exception | Error e)
+        {
+            return new String[]{"MASSIVE PROBLEM REPORT ON GITHUB"};
+        }
+
+
+
     }
+
+
 
 }
