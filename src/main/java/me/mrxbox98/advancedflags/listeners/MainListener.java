@@ -17,6 +17,7 @@ public class MainListener implements Listener {
     public void onPlayerJoinEvent(PlayerJoinEvent event)
     {
         AdvancedPlayer.advancedPlayers.add(new AdvancedPlayer(event.getPlayer()));
+        LogHelper.debug("Added player " + event.getPlayer().getDisplayName() + " to AdvancedPlayers");
         if(AdvancedConfig.locationFlag)
         {
             String ip = event.getPlayer().getAddress().getHostString();
@@ -33,12 +34,14 @@ public class MainListener implements Listener {
     public void onPlayerKickEvent(PlayerKickEvent event)
     {
         AdvancedPlayer.advancedPlayers.remove(AdvancedPlayer.getAdvancedPlayer(event.getPlayer()));
+        LogHelper.debug("Removed player " + event.getPlayer().getDisplayName() + " to AdvancedPlayers");
     }
 
     @EventHandler
     public void onPlayerQuitEvent(PlayerQuitEvent event)
     {
         AdvancedPlayer.advancedPlayers.remove(AdvancedPlayer.getAdvancedPlayer(event.getPlayer()));
+        LogHelper.debug("Removed player " + event.getPlayer().getDisplayName() + " to AdvancedPlayers");
     }
 
 }
