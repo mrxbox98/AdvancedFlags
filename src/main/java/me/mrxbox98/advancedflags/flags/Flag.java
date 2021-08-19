@@ -59,7 +59,15 @@ public class Flag {
         {
             for(int y=0;y<oh;y++)
             {
-                particles[x][y]=new Particle(colors[x][y]);
+                if(x>0 && particles[x-1][y].color.equals(colors[x][y]))
+                {
+                    particles[x][y]=particles[x-1][y];
+                }
+                else
+                {
+                    particles[x][y]=new Particle(colors[x][y]);
+                }
+
             }
         }
 
