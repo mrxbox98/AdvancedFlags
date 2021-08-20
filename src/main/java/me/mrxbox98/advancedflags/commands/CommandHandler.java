@@ -5,7 +5,7 @@ import me.mrxbox98.advancedflags.LogHelper;
 import me.mrxbox98.advancedflags.flags.AdvancedFlagGui;
 import me.mrxbox98.advancedflags.flags.FlagManager;
 import me.mrxbox98.advancedflags.utils.AdvancedPlayer;
-import org.bukkit.ChatColor;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -18,7 +18,10 @@ public class CommandHandler implements LogHelper {
      */
     public static String helpMessage = ChatColor.AQUA.toString()+ ChatColor.BOLD +"AdvancedFlags Version:1.0.0\n"+
             "/af help - "+ChatColor.WHITE+"Main AdvancedCosmetics help command\n"+
-            ChatColor.BOLD.toString()+ChatColor.AQUA+"/af flags - "+ChatColor.WHITE+"Select your flag";
+            ChatColor.BOLD +ChatColor.AQUA+"/af flags - "+ChatColor.WHITE+"Select your flag\n"+
+            ChatColor.BOLD +ChatColor.AQUA+"/af rotate - "+ChatColor.WHITE+"Change flags every second\n"+
+            ChatColor.BOLD +ChatColor.AQUA+"/af version - "+ChatColor.WHITE+"Check AdvancedFlags version\n"+
+            ChatColor.BOLD +ChatColor.AQUA+"/af none - "+ChatColor.WHITE+"Removes your current flag";
 
 
     /**
@@ -117,6 +120,11 @@ public class CommandHandler implements LogHelper {
                     if(player.hasPermission("flags.rotate"))
                     {
                         AdvancedPlayer.getAdvancedPlayer(player).rotate=!AdvancedPlayer.getAdvancedPlayer(player).rotate;
+                        LogHelper.send(player,"Flags will now automatically change.");
+                    }
+                    else
+                    {
+                        LogHelper.send(player,"You do not have the permissions for this command.");
                     }
                     return true;
                 }
@@ -124,6 +132,14 @@ public class CommandHandler implements LogHelper {
                 if(strings[0].equalsIgnoreCase("hide"))
                 {
                     AdvancedPlayer.getAdvancedPlayer(player).hidden=!AdvancedPlayer.getAdvancedPlayer(player).hidden;
+                    if(AdvancedPlayer.getAdvancedPlayer(player).hidden)
+                    {
+                        LogHelper.send(player,"You will now not see flags.");
+                    }
+                    else
+                    {
+                        LogHelper.send(player,"You will now see flags.");
+                    }
                     return true;
                 }
 
@@ -131,9 +147,11 @@ public class CommandHandler implements LogHelper {
                 if(strings[0].equalsIgnoreCase("none"))
                 {
                     AdvancedPlayer.getAdvancedPlayer(player).flagId=-1;
+                    LogHelper.send(player,"Removed your flag.");
                     return true;
                 }
 
+                player.sendMessage(ChatColor.RED+"This AdvancedFlag command is not recognized!");
 
                 return true;
             }
