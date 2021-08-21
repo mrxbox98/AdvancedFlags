@@ -3,6 +3,7 @@ package me.mrxbox98.advancedflags.flags;
 import me.mrxbox98.advancedflags.AdvancedFlags;
 import me.mrxbox98.advancedflags.LogHelper;
 import me.mrxbox98.advancedflags.config.AdvancedConfig;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import java.io.IOException;
@@ -270,17 +271,47 @@ public class FlagManager implements LogHelper {
      */
     public static void drawFlagOnPlayer(Player player, Flag flag)
     {
-        double xx = flag.ow/2d;
 
-        double xy = flag.oh/2d;
-
-        for(int x=0;x<flag.ow;x++)
+        for(int x=-flag.ow/2;x<flag.ow/2;x++)
         {
-            for(int y=0;y<flag.oh;y++)
+            for(int y=-flag.oh/2;y<flag.oh/2;y++)
             {
-                flag.particles[x][y].display(player.getLocation().add(((double)x-xx)/-10d,((double)y-xy)/-10d+4d,getXOffset(x)));
+                flag.particles[x][y].display(generateLocation(x,y,player));
             }
         }
+    }
+
+    /**
+     * Creates the location the particle should be displayed at
+     * @param passX the x cord of the particle on the flag
+     * @param passY the y cord of the particle on the flag
+     * @param player the player
+     * @return the location of the particle
+     */
+    public static Location generateLocation(int passX, int passY, Player player)
+    {
+        double xOffset=((double)passX)/-10d;
+        double yOffset=((double)passY)/-10d+4d;
+        double zOffset=0;
+
+
+
+        if(AdvancedConfig.rotatePitch)
+        {
+
+        }
+
+        if(AdvancedConfig.rotateYaw)
+        {
+            xOffset*=Math.sin(player.getLocation().getYaw());
+            zOffset=((double)passX)/-10d;
+            zOffset*=Math.cos(player.getLocation().getYaw());
+        }
+        zOffset+=getXOffset(passX);
+
+        Location loc = player.getLocation().add(xOffset,yOffset,zOffset);
+
+        return loc;
     }
 
     /**

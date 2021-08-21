@@ -1,6 +1,7 @@
 package me.mrxbox98.advancedflags.particles;
 
 import me.mrxbox98.advancedflags.AdvancedFlags;
+import me.mrxbox98.advancedflags.config.AdvancedConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 

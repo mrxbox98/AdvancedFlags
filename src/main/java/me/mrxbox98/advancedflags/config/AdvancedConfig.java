@@ -23,6 +23,10 @@ public class AdvancedConfig {
 
     public static boolean flagPreview=false;
 
+    public static boolean rotateYaw=false;
+
+    public static boolean rotatePitch=false;
+
     public static void setupConfig()
     {
         FileConfiguration config = AdvancedFlags.getInstance().getConfig();
@@ -72,6 +76,16 @@ public class AdvancedConfig {
             config.addDefault("FlagPreview",false);
         }
 
+        if(!config.contains("RotateYaw"))
+        {
+            config.addDefault("RotateYaw",false);
+        }
+
+        if(!config.contains("RotatePitch"))
+        {
+            config.addDefault("RotatePitch",false);
+        }
+
         config.options().copyDefaults(true);
         AdvancedFlags.getInstance().saveConfig();
 
@@ -84,6 +98,8 @@ public class AdvancedConfig {
         ipStackApiKey=config.getString("IpStackApiKey");
         debug=config.getBoolean("Default");
         flagPreview=config.getBoolean("FlagPreview");
+        rotateYaw=config.getBoolean("RotateYaw");
+        rotatePitch=config.getBoolean("RotatePitch");
     }
 
 }
