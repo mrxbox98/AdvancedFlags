@@ -63,7 +63,7 @@ public class AdvancedFlagGui implements Listener, LogHelper {
                 {
                     if(player.hasPermission("flags."+ FlagManager.flags.get(i).abbr))
                     {
-                        inventory.addItem(createGuiItem(Material.getMaterial("STAINED_GLASS_PANE"), ChatColor.GREEN+ChatColor.BOLD.toString()+generateDashes(FlagManager.flags.get(i)), 5,generateMeta(FlagManager.flags.get(i))));
+                        inventory.addItem(createGuiItem(Material.getMaterial("STAINED_GLASS_PANE"), ChatColor.GREEN+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), 5,generateMeta(FlagManager.flags.get(i))));
                     }
                     else
                     {
@@ -287,20 +287,6 @@ public class AdvancedFlagGui implements Listener, LogHelper {
         {
             return new String[]{"MASSIVE PROBLEM REPORT ON GITHUB"};
         }
-    }
-
-    public String generateDashes(Flag flag)
-    {
-        String str = "";
-        for(int i=0;i<flag.ow;i++)
-        {
-            str+="-";
-            if(i*2== flag.ow)
-            {
-                str+=AdvancedFlags.aliases.get(flag.abbr.toUpperCase());
-            }
-        }
-        return str;
     }
 
 

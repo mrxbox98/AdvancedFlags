@@ -276,7 +276,7 @@ public class FlagManager implements LogHelper {
         {
             for(int y=-flag.oh/2;y<flag.oh/2;y++)
             {
-                flag.particles[x][y].display(generateLocation(x,y,player));
+                flag.particles[x+flag.ow/2][y+flag.oh/2].display(generateLocation(x,y,player));
             }
         }
     }
