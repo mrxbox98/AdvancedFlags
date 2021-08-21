@@ -291,23 +291,33 @@ public class FlagManager implements LogHelper {
     public static Location generateLocation(int passX, int passY, Player player)
     {
         double xOffset=((double)passX)/-10d;
-        double yOffset=((double)passY)/-10d+4d;
-        double zOffset=0;
+        double yOffset=((double)passY)/-10d;
+        double zOffset1=0;
+        double zOffset2=0;
 
 
 
+        /*
         if(AdvancedConfig.rotatePitch)
         {
-
+            yOffset*=Math.cos(Math.toRadians(player.getLocation().getPitch()));
+            zOffset1=((double)passY)/-10d;
+            zOffset1*=Math.sin(Math.toRadians(-player.getLocation().getPitch()));
         }
+
+         */
 
         if(AdvancedConfig.rotateYaw)
         {
-            xOffset*=Math.cos(player.getLocation().getYaw());
-            zOffset=((double)passX)/-10d;
-            zOffset*=Math.sin(player.getLocation().getYaw());
+            xOffset*=Math.cos(Math.toRadians(player.getLocation().getYaw()));
+            zOffset2=((double)passX)/-10d;
+            zOffset2*=Math.sin(Math.toRadians(player.getLocation().getYaw()));
         }
-        zOffset+=getXOffset(passX);
+        //zOffset1+=getXOffset(passX);
+        zOffset2+=getXOffset(passX);
+        yOffset+=4d;
+
+        double zOffset=zOffset1+zOffset2;
 
         Location loc = player.getLocation().add(xOffset,yOffset,zOffset);
 

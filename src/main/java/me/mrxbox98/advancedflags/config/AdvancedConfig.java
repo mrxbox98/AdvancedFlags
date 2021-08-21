@@ -25,7 +25,7 @@ public class AdvancedConfig {
 
     public static boolean rotateYaw=false;
 
-    public static boolean rotatePitch=false;
+    //public static boolean rotatePitch=false;
 
     public static void setupConfig()
     {
@@ -80,11 +80,13 @@ public class AdvancedConfig {
         {
             config.addDefault("RotateYaw",false);
         }
-
+        /*
         if(!config.contains("RotatePitch"))
         {
             config.addDefault("RotatePitch",false);
         }
+
+         */
 
         config.options().copyDefaults(true);
         AdvancedFlags.getInstance().saveConfig();
@@ -99,7 +101,7 @@ public class AdvancedConfig {
         debug=config.getBoolean("Default");
         flagPreview=config.getBoolean("FlagPreview");
         rotateYaw=config.getBoolean("RotateYaw");
-        rotatePitch=config.getBoolean("RotatePitch");
+        //rotatePitch=config.getBoolean("RotatePitch");
     }
 
 }
