@@ -303,9 +303,9 @@ public class FlagManager implements LogHelper {
 
         if(AdvancedConfig.rotateYaw)
         {
-            xOffset*=Math.sin(player.getLocation().getYaw());
+            xOffset*=Math.cos(player.getLocation().getYaw());
             zOffset=((double)passX)/-10d;
-            zOffset*=Math.cos(player.getLocation().getYaw());
+            zOffset*=Math.sin(player.getLocation().getYaw());
         }
         zOffset+=getXOffset(passX);
 
