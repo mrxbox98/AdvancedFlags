@@ -11,8 +11,10 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -286,6 +288,14 @@ public class AdvancedFlagGui implements Listener, LogHelper {
         catch(Exception | Error e)
         {
             return new String[]{"MASSIVE PROBLEM REPORT ON GITHUB"};
+        }
+    }
+
+    public void onInventoryClose(InventoryCloseEvent event)
+    {
+        if(event.getInventory().equals(inventory))
+        {
+            HandlerList.unregisterAll(this);
         }
     }
 
