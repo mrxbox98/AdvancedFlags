@@ -102,6 +102,18 @@ public class AdvancedConfig {
         flagPreview=config.getBoolean("FlagPreview");
         rotateYaw=config.getBoolean("RotateYaw");
         //rotatePitch=config.getBoolean("RotatePitch");
+        if(AdvancedConfig.flagPreview)
+        {
+            if(AdvancedFlags.instance.getServer().getVersion().contains("1.16") || AdvancedFlags.instance.getServer().getVersion().contains("1.17"))
+            {
+
+            }
+            else
+            {
+                System.out.println("AdvancedFlags preview does not yet work on older than 1.16 versions of Minecraft");
+                AdvancedConfig.flagPreview=false;
+            }
+        }
     }
 
 }

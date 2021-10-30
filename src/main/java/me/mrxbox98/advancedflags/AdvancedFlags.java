@@ -17,9 +17,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.io.*;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.HashMap;
 
 public final class AdvancedFlags extends JavaPlugin implements LogHelper {
@@ -30,7 +29,7 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
     public static String versionMC;
 
-    public static final String version = "1.2.5";
+    public static final String version = "1.2.6";
 
     public static HashMap<String, String> aliases = new HashMap<>();
 
@@ -154,35 +153,6 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
         setupRotate();
     }
 
-    public void setupConfig()
-    {
-        if(AdvancedConfig.flagPreview)
-        {
-            if(versionMC.equals("1.16") || versionMC.equals("1.17"))
-            {
-
-            }
-            else
-            {
-                System.out.println("AdvancedFlags preview does not yet work on older than 1.16 versions of Minecraft");
-                AdvancedConfig.flagPreview=false;
-            }
-        }
-    }
-
-
-
-
-
-    public static String readJsonFromUrl(String url) throws Exception {
-        InputStream is = new URL(url).openStream();
-        try {
-            BufferedReader rd = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
-            return readAll(rd);
-        } finally {
-            is.close();
-        }
-    }
 
     /**
      * Reads the stuff in the reader
