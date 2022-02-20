@@ -29,7 +29,7 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
     public static String versionMC;
 
-    public static final String version = "1.2.6";
+    public static final String version = "1.2.7";
 
     public static HashMap<String, String> aliases = new HashMap<>();
 
@@ -93,6 +93,7 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
         if(getServer().getVersion().contains("1.15")) {versionMC="1.15";}
         if(getServer().getVersion().contains("1.16")) {versionMC="1.16";}
         if(getServer().getVersion().contains("1.17")) {versionMC="1.17";}
+        if(getServer().getVersion().contains("1.18")) {versionMC="1.18";}
     }
 
     /**
