@@ -24,9 +24,7 @@ public class AdvancedConfig {
     public static boolean flagPreview=false;
 
     public static boolean rotateYaw=false;
-
-    //public static boolean rotatePitch=false;
-
+    
     public static void setupConfig()
     {
         FileConfiguration config = AdvancedFlags.getInstance().getConfig();
@@ -76,17 +74,10 @@ public class AdvancedConfig {
             config.addDefault("FlagPreview",false);
         }
 
-        if(!config.contains("RotateYaw"))
+        if(!config.contains("RotateYaw")) 
         {
-            config.addDefault("RotateYaw",false);
+            config.addDefault("RotateYaw", false);
         }
-        /*
-        if(!config.contains("RotatePitch"))
-        {
-            config.addDefault("RotatePitch",false);
-        }
-
-         */
 
         config.options().copyDefaults(true);
         AdvancedFlags.getInstance().saveConfig();
@@ -101,14 +92,11 @@ public class AdvancedConfig {
         debug=config.getBoolean("Default");
         flagPreview=config.getBoolean("FlagPreview");
         rotateYaw=config.getBoolean("RotateYaw");
-        //rotatePitch=config.getBoolean("RotatePitch");
+
         if(AdvancedConfig.flagPreview)
         {
-            if(AdvancedFlags.instance.getServer().getVersion().contains("1.16") || AdvancedFlags.instance.getServer().getVersion().contains("1.17"))
-            {
-
-            }
-            else
+            int version = Integer.parseInt(AdvancedFlags.instance.getServer().getVersion().split("\\.")[1]);
+            if(version<16)
             {
                 System.out.println("AdvancedFlags preview does not yet work on older than 1.16 versions of Minecraft");
                 AdvancedConfig.flagPreview=false;

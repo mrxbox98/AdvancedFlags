@@ -23,7 +23,7 @@ public class MainListener implements Listener {
             String ip = event.getPlayer().getAddress().getHostString();
             String country = IpHelper.getTwoLetterCode(ip);
             AdvancedPlayer.getAdvancedPlayer(event.getPlayer()).flagId=FlagManager.abbreviations.indexOf(country);
-            if(FlagManager.abbreviations.indexOf(country)==-1)
+            if(!FlagManager.abbreviations.contains(country))
             {
                 LogHelper.debug("There was an error: report on GitHub with this info" + "\n" + country);
             }

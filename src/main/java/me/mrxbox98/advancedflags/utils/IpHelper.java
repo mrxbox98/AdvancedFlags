@@ -8,6 +8,11 @@ import java.nio.charset.StandardCharsets;
 
 public class IpHelper {
 
+    /**
+     * Gets the two-letter code of the country based on their IP
+     * @param ip the ip of the user
+     * @return the two-letter country code of the user
+     */
     public static String getTwoLetterCode(String ip)
     {
         try

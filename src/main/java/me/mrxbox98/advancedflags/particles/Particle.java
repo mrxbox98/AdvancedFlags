@@ -29,12 +29,9 @@ public class Particle {
      */
     public void display(Location location)
     {
-        Bukkit.getScheduler().runTaskAsynchronously(AdvancedFlags.getInstance(), new Runnable() {
-            @Override
-            public void run() {
-                Object packet = AdvancedFlags.particles.REDSTONE().packetColored(true,location,org.bukkit.Color.fromRGB(color.getRed(),color.getGreen(),color.getBlue()));
-                AdvancedFlags.particles.sendPacketIf(location, 30D, packet, AdvancedFlags.playerPredicate);
-            }
+        Bukkit.getScheduler().runTaskAsynchronously(AdvancedFlags.getInstance(), () -> {
+            Object packet = AdvancedFlags.particles.REDSTONE().packetColored(true,location,org.bukkit.Color.fromRGB(color.getRed(),color.getGreen(),color.getBlue()));
+            AdvancedFlags.particles.sendPacketIf(location, 30D, packet, AdvancedFlags.playerPredicate);
         });
 
     }

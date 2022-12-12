@@ -6,10 +6,10 @@ import org.bukkit.entity.Player;
 public class AdvancedPredicate implements PlayerPredicate {
 
     /**
-     * Returns <code>true</code> if a packet should be send to a player.
+     * Returns <code>true</code> if a packet should be sent to a player.
      *
      * @param player a <code>Player</code> being processed by this predicate.
-     * @return <code>true</code> if a packet should be send to a player, <code>false</code> otherwise.
+     * @return <code>true</code> if a packet should be sent to a player, <code>false</code> otherwise.
      */
     @Override
     public boolean shouldSend(Player player) {

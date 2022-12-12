@@ -218,7 +218,7 @@ public class AdvancedFlagGui implements Listener, LogHelper {
             return;
         }
 
-        // Using slots click is a best option for your inventory click's
+        // Using slots click is the best option for your inventory click's
         if(AdvancedPlayer.getAdvancedPlayer(p).flagId==e.getRawSlot()+(page-1)*45)
         {
             AdvancedPlayer.getAdvancedPlayer(p).flagId=-1;

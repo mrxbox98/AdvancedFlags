@@ -250,7 +250,7 @@ public class FlagManager implements LogHelper {
 
         AdvancedFlags.getInstance().getLogger().info(abbreviations.toString());
 
-        System.out.println(BLUE_BACKGROUND+"↱STARTED FLAG DOWNLOADING↰"+RESET);
+        System.out.println(BLUE_BACKGROUND+"↱STARTED FLAG LOADING↰"+RESET);
 
         for (String abbreviation : abbreviations) {
             try {
@@ -259,7 +259,7 @@ public class FlagManager implements LogHelper {
                 e.printStackTrace();
             }
         }
-        System.out.println(BLUE_BACKGROUND+"↳      FINISHED FLAGS    ↲"+RESET);
+        System.out.println(BLUE_BACKGROUND+"↳    FINISHED FLAGS  ↲"+RESET);
 
         AdvancedFlags.setupFlags();
     }
@@ -295,33 +295,19 @@ public class FlagManager implements LogHelper {
         double zOffset1=0;
         double zOffset2=0;
 
-
-
-        /*
-        if(AdvancedConfig.rotatePitch)
-        {
-            yOffset*=Math.cos(Math.toRadians(player.getLocation().getPitch()));
-            zOffset1=((double)passY)/-10d;
-            zOffset1*=Math.sin(Math.toRadians(-player.getLocation().getPitch()));
-        }
-
-         */
-
         if(AdvancedConfig.rotateYaw)
         {
             xOffset*=Math.cos(Math.toRadians(player.getLocation().getYaw()));
             zOffset2=((double)passX)/-10d;
             zOffset2*=Math.sin(Math.toRadians(player.getLocation().getYaw()));
         }
-        //zOffset1+=getXOffset(passX);
+
         zOffset2+=getXOffset(passX);
         yOffset+=4d;
 
         double zOffset=zOffset1+zOffset2;
 
-        Location loc = player.getLocation().add(xOffset,yOffset,zOffset);
-
-        return loc;
+        return player.getLocation().add(xOffset,yOffset,zOffset);
     }
 
     /**
