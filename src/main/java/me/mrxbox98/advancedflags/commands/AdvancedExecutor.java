@@ -14,6 +14,15 @@ import org.bukkit.entity.Player;
 import java.util.Arrays;
 
 public class AdvancedExecutor implements CommandExecutor {
+
+    /**
+     * Runs a command
+     * @param sender Source of the command
+     * @param command Command which was executed
+     * @param label Alias of the command which was used
+     * @param args Passed command arguments
+     * @return true
+     */
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
@@ -35,6 +44,10 @@ public class AdvancedExecutor implements CommandExecutor {
         }
         
         switch (args[0].toLowerCase()) {
+            case "help": {
+                helpMessage(player);
+                return true;
+            }
             case "flags": {
                 flag(player, Arrays.copyOfRange(args, 1, args.length));
                 return true;
