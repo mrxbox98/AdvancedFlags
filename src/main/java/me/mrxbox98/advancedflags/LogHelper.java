@@ -44,11 +44,6 @@ public interface LogHelper {
     String CYAN_BACKGROUND = "\u001B[46m";
     String WHITE_BACKGROUND = "\u001B[47m";
 
-    default void log(String toLog)
-    {
-        System.out.println(CYAN+"ADVANCEDFLAGS>>");
-    }
-
     /**
      * Sends a formatted String to the player
      * @param player the player to send it to
@@ -63,7 +58,7 @@ public interface LogHelper {
     {
         if(AdvancedConfig.debug)
         {
-            System.out.println("AdvancedFlags DEBUG: " + msg);
+            AdvancedFlags.getInstance().getLogger().info("AdvancedFlags DEBUG: " + msg);
         }
     }
 }

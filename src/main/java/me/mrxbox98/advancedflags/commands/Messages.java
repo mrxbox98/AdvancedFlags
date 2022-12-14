@@ -5,7 +5,7 @@ import net.md_5.bungee.api.ChatColor;
 
 public class Messages {
     
-    public static final String HELP_MESSAGE = ChatColor.AQUA.toString()+ ChatColor.BOLD +"AdvancedFlags Version: " + AdvancedFlags.version + "\n"+
+    public static final String HELP_MESSAGE = ChatColor.AQUA.toString()+ ChatColor.BOLD +"AdvancedFlags Version: " + AdvancedFlags.PLUGIN_VERSION + "\n"+
             "/af help - "+ChatColor.WHITE+"Main AdvancedCosmetics help command\n"+
             ChatColor.BOLD +ChatColor.AQUA+"/af flags - "+ChatColor.WHITE+"Select your flag\n"+
             ChatColor.BOLD +ChatColor.AQUA+"/af rotate - "+ChatColor.WHITE+"Change flags every second\n"+

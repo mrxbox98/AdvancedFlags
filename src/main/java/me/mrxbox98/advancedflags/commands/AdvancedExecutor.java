@@ -75,7 +75,7 @@ public class AdvancedExecutor implements CommandExecutor {
      * @param player the player
      */
     public void sendVersion(Player player) {
-        LogHelper.send(player,"This server is running AdvancedFlags version " + AdvancedFlags.version);
+        LogHelper.send(player,"This server is running AdvancedFlags version " + AdvancedFlags.PLUGIN_VERSION);
     }
 
     /**
