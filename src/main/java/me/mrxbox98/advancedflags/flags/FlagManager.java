@@ -15,7 +15,7 @@ public class FlagManager implements LogHelper {
     /**
      * The abbreviations of all the countries with ISO code 3166 ALPHA-2
      */
-    public static final ArrayList<String> abbreviations = new ArrayList<>();
+    public static ArrayList<String> abbreviations;
 
     /**
      * The arraylist of the flags used
@@ -246,7 +246,7 @@ public class FlagManager implements LogHelper {
     public static void setup()
     {
 
-        abbreviations.addAll(Arrays.asList(csv));
+        abbreviations = new ArrayList<>(Arrays.asList(csv));
 
         AdvancedFlags.getInstance().getLogger().info(CYAN+"↱STARTED FLAG LOADING↰"+RESET);
 

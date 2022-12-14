@@ -35,13 +35,10 @@ public class Flag {
         {
             image=ImageIO.read(this.getClass().getResource("/flags/"+abbr.toLowerCase()+".png"));
         }
-
-
+        
         oh=image.getHeight();
 
         ow=image.getWidth();
-
-
 
         colors = new Color[ow][oh];
 
