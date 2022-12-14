@@ -28,3 +28,6 @@
 AdvancedFlags does not require the installation of any dependencies. It uses ParticleNativeAPI, but this plugin is included in the jarfile.
 
 ## Gallery
+![American Flag](https://i.mrxbox98.me/file/2022/12/javaw_SR6slAvDMu.png)
+![Help Menu](https://i.mrxbox98.me/file/2022/12/javaw_CVt9qNtKn3.png)
+![GUI](https://i.mrxbox98.me/file/2022/12/javaw_Sgsv8Cj57j.png)
