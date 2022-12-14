@@ -7,7 +7,7 @@
 [![polymart](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@2/assets/compact/available/polymart_vector.svg)](https://polymart.org/resource/advancedflags.2729)
 [![spigot](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@2/assets/compact/supported/spigot_vector.svg)](https://www.spigotmc.org/resources/%E2%9C%A8advancedflags%E2%9C%A8200-countries%E2%9C%A8animated%E2%9C%A8gui%E2%9C%A8custom-flags%E2%9C%A8geolocated-flags%E2%9C%A8.95031/)
 ---  
-AdvancedFlags is a cosmetic plugin that allows you to show a flag above a players head.  
+### AdvancedFlags is a cosmetic plugin that allows you to show a flag above a players head.  
 **Features:**
  - Display flag above players head
  - Rotate flag based on where the player looks
