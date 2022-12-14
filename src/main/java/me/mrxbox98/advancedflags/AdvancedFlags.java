@@ -123,15 +123,12 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
      */
     public static void setupRotate()
     {
-        Bukkit.getScheduler().runTaskTimerAsynchronously(AdvancedFlags.getInstance(), new Runnable() {
-            @Override
-            public void run() {
-                for(Player player: instance.getServer().getOnlinePlayers())
+        Bukkit.getScheduler().runTaskTimerAsynchronously(AdvancedFlags.getInstance(), () -> {
+            for(Player player: instance.getServer().getOnlinePlayers())
+            {
+                if(AdvancedPlayer.getAdvancedPlayer(player)!=null && AdvancedPlayer.getAdvancedPlayer(player).rotate)
                 {
-                    if(AdvancedPlayer.getAdvancedPlayer(player)!=null && AdvancedPlayer.getAdvancedPlayer(player).rotate)
-                    {
-                        AdvancedPlayer.getAdvancedPlayer(player).advance();
-                    }
+                    AdvancedPlayer.getAdvancedPlayer(player).advance();
                 }
             }
         },0,20);
