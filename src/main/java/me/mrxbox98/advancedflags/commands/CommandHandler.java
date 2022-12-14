@@ -16,7 +16,7 @@ public class CommandHandler implements LogHelper {
     /**
      * The help message
      */
-    public static String helpMessage = ChatColor.AQUA.toString()+ ChatColor.BOLD +"AdvancedFlags Version:1.0.0\n"+
+    public static String helpMessage = ChatColor.AQUA.toString()+ ChatColor.BOLD +"AdvancedFlags Version: " + AdvancedFlags.version + "\n"+
             "/af help - "+ChatColor.WHITE+"Main AdvancedCosmetics help command\n"+
             ChatColor.BOLD +ChatColor.AQUA+"/af flags - "+ChatColor.WHITE+"Select your flag\n"+
             ChatColor.BOLD +ChatColor.AQUA+"/af rotate - "+ChatColor.WHITE+"Change flags every second\n"+
@@ -25,137 +25,11 @@ public class CommandHandler implements LogHelper {
 
 
     /**
-     * GUIDE ON HOW TO CREATE A COMMAND
-     *
-     * 1. Create a new if statement first checking for
-     * strings.length to prevent a ArrayOutOfBounds Exception
-     * and then checking the command name
-     *
-     * 2. Inside the if statement run all code and make it
-     * async if possible
-     *
-     * 3. At the end of the if statement make sure to return true;
+     * Sets up the commands
      */
     public static void setupCommands()
     {
-        /*
-         * <br>The command for all AdvancedCosmetics Commands<br>
-         */
-        AdvancedFlags.getInstance().getCommand("af").setExecutor(new CommandExecutor() {
-            /**
-             * Used for all commands<br>
-             * @param commandSender the player that sent the command<br>
-             * @param command the command that was sent in plugin.yml<br>
-             * @param s I do not know what this is<br>
-             * @param strings the parameters of the command<br>
-             * @return true or false does not matter<br>
-             */
-            @Override
-            public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-
-                /*
-                 * <br>Ends the piece of code if the commandSender
-                 * is not a player on the server<br>
-                 */
-                if(!(commandSender instanceof Player))
-                {
-                    commandSender.sendMessage("You need to be a player to use this command!");
-                    return true;
-                }
-
-                //Casts the command sender to a player as it is always a player
-                Player player = ((Player) commandSender);
-
-                /*
-                 * <br>Sends the help message to the player
-                 * if there are no args or the first arg
-                 * is help<br>
-                 */
-                if(strings.length==0 || strings[0].equalsIgnoreCase("help"))
-                {
-                    commandSender.sendMessage(helpMessage);
-                    return true;
-                }
-
-                /*
-                 * <br>Opens the Flag Gui with the player<br>
-                 * <br>Also prevents any error and checks args<br>
-                 */
-                if(strings[0].equalsIgnoreCase("flags") && strings.length==1)
-                {
-                    AdvancedFlags.getInstance().getServer().getPluginManager().registerEvents(new AdvancedFlagGui((Player) commandSender,1), AdvancedFlags.getInstance());
-                    return true;
-                }
-
-                /*
-                 * The player will be able to select their own flag with a two digit code or the name
-                 */
-                if(strings[0].equalsIgnoreCase("flags") && strings.length==2)
-                {
-
-                    if(strings[1].length()==2)
-                    {
-                        AdvancedPlayer.getAdvancedPlayer(player).flagId= FlagManager.abbreviations.indexOf(strings[1].toUpperCase());
-                    }
-                    else
-                    {
-                        AdvancedFlags.aliases.forEach((k,v) -> {
-                            if(v.equalsIgnoreCase(strings[1]))
-                            {
-                                AdvancedPlayer.getAdvancedPlayer(player).flagId= FlagManager.abbreviations.indexOf(k.toLowerCase());
-                            }
-                        });
-                    }
-                    return true;
-                }
-
-                if(strings[0].equalsIgnoreCase("version"))
-                {
-                    LogHelper.send(player,"This server is running AdvancedFlags version " + AdvancedFlags.version);
-                    return true;
-                }
-
-                if(strings[0].equalsIgnoreCase("rotate"))
-                {
-                    if(player.hasPermission("flags.rotate"))
-                    {
-                        AdvancedPlayer.getAdvancedPlayer(player).rotate=!AdvancedPlayer.getAdvancedPlayer(player).rotate;
-                        LogHelper.send(player,"Flags will now automatically change.");
-                    }
-                    else
-                    {
-                        LogHelper.send(player,"You do not have the permissions for this command.");
-                    }
-                    return true;
-                }
-
-                if(strings[0].equalsIgnoreCase("hide"))
-                {
-                    AdvancedPlayer.getAdvancedPlayer(player).hidden=!AdvancedPlayer.getAdvancedPlayer(player).hidden;
-                    if(AdvancedPlayer.getAdvancedPlayer(player).hidden)
-                    {
-                        LogHelper.send(player,"You will now not see flags.");
-                    }
-                    else
-                    {
-                        LogHelper.send(player,"You will now see flags.");
-                    }
-                    return true;
-                }
-
-
-                if(strings[0].equalsIgnoreCase("none"))
-                {
-                    AdvancedPlayer.getAdvancedPlayer(player).flagId=-1;
-                    LogHelper.send(player,"Removed your flag.");
-                    return true;
-                }
-
-                player.sendMessage(ChatColor.RED+"This AdvancedFlag command is not recognized!");
-
-                return true;
-            }
-        });
+        AdvancedFlags.getInstance().getCommand("af").setExecutor(new AdvancedExecutor());
     }
 
 }

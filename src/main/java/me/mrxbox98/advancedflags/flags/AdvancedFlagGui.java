@@ -291,6 +291,7 @@ public class AdvancedFlagGui implements Listener, LogHelper {
         }
     }
 
+    @EventHandler
     public void onInventoryClose(InventoryCloseEvent event)
     {
         if(event.getInventory().equals(inventory))

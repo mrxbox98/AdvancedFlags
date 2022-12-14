@@ -56,7 +56,7 @@ public interface LogHelper {
      */
     static void send(Player player, String str)
     {
-        player.sendMessage(ChatColor.AQUA.toString()+ChatColor.BOLD+"AdvancedFlags>>"+ChatColor.RESET+str);
+        player.sendMessage(ChatColor.AQUA.toString()+ChatColor.BOLD+"AdvancedFlags> "+ChatColor.RESET+str);
     }
 
     static void debug(String msg)

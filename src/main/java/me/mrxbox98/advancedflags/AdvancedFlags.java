@@ -18,7 +18,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.IOException;
-import java.io.Reader;
 import java.util.HashMap;
 
 public final class AdvancedFlags extends JavaPlugin implements LogHelper {
@@ -40,8 +39,6 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
         LogHelper.debug("Started plugin.");
 
         instance=this;
-
-
 
         int pluginId=12331;
         new Metrics(this, pluginId);
@@ -98,7 +95,7 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
     }
 
     /**
-     * <br>Sets up all of the flags<br>
+     * Sets up all the flags
      */
     public static void setupFlags()
     {
@@ -122,7 +119,7 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
     }
 
     /**
-     * <br>Rotates the flags that are on the player<br>
+     * Rotates the flags that are on the player
      */
     public static void setupRotate()
     {
@@ -153,22 +150,6 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
         setupFlags();
 
         setupRotate();
-    }
-
-
-    /**
-     * Reads the stuff in the reader
-     * @param rd the reader
-     * @return the data in the reader
-     * @throws IOException possible error
-     */
-    private static String readAll(Reader rd) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        int cp;
-        while ((cp = rd.read()) != -1) {
-            sb.append((char) cp);
-        }
-        return sb.toString();
     }
 
     public static JavaPlugin getInstance()
