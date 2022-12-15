@@ -24,7 +24,7 @@
 ``/af none`` - Removes the flag from the player
 
 ## Dependencies
-AdvancedFlags does not require the installation of any dependencies. It uses ![ParticleNativeAPI](https://github.com/Fierioziy/ParticleNativeAPI), but this plugin is included in the jarfile.
+AdvancedFlags does not require the installation of any dependencies. It uses [ParticleNativeAPI](https://github.com/Fierioziy/ParticleNativeAPI), but this plugin is included in the jarfile.
 
 ## Gallery
 ![American Flag](https://i.mrxbox98.me/file/2022/12/javaw_SR6slAvDMu.png)
