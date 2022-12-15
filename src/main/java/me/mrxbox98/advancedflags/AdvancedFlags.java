@@ -26,7 +26,7 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
     public static Particles_1_8 particles;
 
-    public static String versionMC;
+    public static int versionMC;
 
     public static final String PLUGIN_VERSION = "1.2.8";
 
@@ -80,19 +80,9 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
     public void setupVersion()
     {
-        System.out.println(getServer().getVersion());
-        if(getServer().getVersion().contains("1.8")) {versionMC="1.8";}
-        if(getServer().getVersion().contains("1.9")) {versionMC="1.9";}
-        if(getServer().getVersion().contains("1.10")) {versionMC="1.10";}
-        if(getServer().getVersion().contains("1.11")) {versionMC="1.11";}
-        if(getServer().getVersion().contains("1.12")) {versionMC="1.12";}
-        if(getServer().getVersion().contains("1.13")) {versionMC="1.13";}
-        if(getServer().getVersion().contains("1.14")) {versionMC="1.14";}
-        if(getServer().getVersion().contains("1.15")) {versionMC="1.15";}
-        if(getServer().getVersion().contains("1.16")) {versionMC="1.16";}
-        if(getServer().getVersion().contains("1.17")) {versionMC="1.17";}
-        if(getServer().getVersion().contains("1.18")) {versionMC="1.18";}
-        if(getServer().getVersion().contains("1.19")) {versionMC="1.19";}
+        String version = getServer().getVersion().split("\\.")[1];
+        
+        versionMC = Integer.parseInt(version);
     }
 
     /**
