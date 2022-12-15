@@ -78,6 +78,9 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
     }
 
+    /**
+     * Detects the version
+     */
     public void setupVersion()
     {
         String version = getServer().getVersion().split("\\.")[1];
