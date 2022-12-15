@@ -1,6 +1,5 @@
 ![Logo](https://i.mrxbox98.me/file/2022/12/AdvancedFlagThread.png)
-
----  
+---
 [![builtbybit](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@2/assets/compact/available/builtbybit_vector.svg)](https://builtbybit.com/resources/advancedflags200-countriesanimatedguicustom-flagsgeolocated-flags.20969/)
 [![github](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@2/assets/compact/available/github_vector.svg)](https://github.com/mrxbox98/AdvancedFlags/releases)
 [![modrinth](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@2/assets/compact/available/modrinth_vector.svg)](https://modrinth.com/plugin/advancedflags)
