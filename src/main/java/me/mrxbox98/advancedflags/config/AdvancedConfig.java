@@ -95,8 +95,7 @@ public class AdvancedConfig {
 
         if(AdvancedConfig.flagPreview)
         {
-            int version = Integer.parseInt(AdvancedFlags.instance.getServer().getVersion().split("\\.")[1]);
-            if(version<16)
+            if(AdvancedFlags.versionMC<16)
             {
                 System.out.println("AdvancedFlags preview does not yet work on older than 1.16 versions of Minecraft");
                 AdvancedConfig.flagPreview=false;
