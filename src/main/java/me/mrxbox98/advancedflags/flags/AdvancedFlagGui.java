@@ -59,38 +59,26 @@ public class AdvancedFlagGui implements Listener, LogHelper {
 
         for(int i=startIndex;i<startIndex+45;i++)
         {
-            if(i< FlagManager.flags.size())
+            if(i < FlagManager.flags.size())
             {
-                if(Material.getMaterial("LIME_STAINED_GLASS_PANE")==null || Material.getMaterial("RED_STAINED_GLASS_PANE")==null)
+                boolean old = Material.getMaterial("RED_STAINED_GLASS_PANE")==null;
+                
+                Material red = old ? Material.getMaterial("STAINED_GLASS_PANE") : Material.getMaterial("RED_STAINED_GLASS_PANE");
+                Material lime = old ? Material.getMaterial("STAINED_GLASS_PANE") : Material.getMaterial("LIME_STAINED_GLASS_PANE");
+
+                if(player.hasPermission("flags."+ FlagManager.flags.get(i).abbr))
                 {
-                    if(player.hasPermission("flags."+ FlagManager.flags.get(i).abbr))
-                    {
-                        inventory.addItem(createGuiItem(Material.getMaterial("STAINED_GLASS_PANE"), ChatColor.GREEN+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), 5,generateMeta(FlagManager.flags.get(i))));
-                    }
-                    else
-                    {
-                        inventory.addItem(createGuiItem(Material.getMaterial("STAINED_GLASS_PANE"), ChatColor.RED+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), 14,ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------", ChatColor.AQUA+"You do not have this flag",ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------"));
-                    }
+                    inventory.addItem(createGuiItem(lime, ChatColor.GREEN+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), 5, generateMeta(FlagManager.flags.get(i))));
                 }
                 else
                 {
-                    if(player.hasPermission("flags."+ FlagManager.flags.get(i).abbr))
-                    {
-                        inventory.addItem(createGuiItem(Material.getMaterial("LIME_STAINED_GLASS_PANE"), ChatColor.GREEN+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr),generateMeta(FlagManager.flags.get(i))));
-                    }
-                    else
-                    {
-                        inventory.addItem(createGuiItem(Material.getMaterial("RED_STAINED_GLASS_PANE"), ChatColor.RED+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), 14,ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------", ChatColor.AQUA+"You do not have this flag",ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------"));
-                    }
+                    inventory.addItem(createGuiItem(red, ChatColor.RED+ChatColor.BOLD.toString()+"Flag " + AdvancedFlags.aliases.get(FlagManager.flags.get(i).abbr), 14, ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------", ChatColor.AQUA+"You do not have this flag",ChatColor.BOLD+ChatColor.WHITE.toString()+"---------------------------"));
                 }
-
-
-
             }
 
         }
-        inventory.setItem(45, createGuiItem(Material.ARROW,ChatColor.AQUA+"Previous Page",ChatColor.AQUA+"Click on this for the previous page"));
-        inventory.setItem(53, createGuiItem(Material.ARROW,ChatColor.AQUA+"Next Page",ChatColor.AQUA+"Click on this for the next page"));
+        inventory.setItem(45, createGuiItem(Material.ARROW,ChatColor.AQUA+"Previous Page", 1,ChatColor.AQUA+"Click on this for the previous page"));
+        inventory.setItem(53, createGuiItem(Material.ARROW,ChatColor.AQUA+"Next Page", 1,ChatColor.AQUA+"Click on this for the next page"));
     }
 
     /**
@@ -108,43 +96,20 @@ public class AdvancedFlagGui implements Listener, LogHelper {
      * @param lore the lore of the item
      * @return the item that was created
      */
-    protected ItemStack createGuiItem(final Material material, final String name, final String... lore) {
+    protected ItemStack createGuiItem(Material material, String name, int color, String... lore) {
 
-        final ItemStack item = new ItemStack(material, 1);
-
-        final ItemMeta meta = item.getItemMeta();
-
-        // Set the name of the item
-        meta.setDisplayName(name);
-
-        // Set the lore of the item
-        meta.setLore(Arrays.asList(lore));
-
-        if(AdvancedConfig.glowingFlag)
-        {
-            meta.addEnchant(Enchantment.LUCK,-1,true);
+        ItemStack item;
+        
+        if(material.equals(Material.getMaterial("STAINED_GLASS_PANE"))) {
+            item = new ItemStack(material, 1, (byte)color);
+        } 
+        else {
+            item = new ItemStack(material, 1);
         }
 
-        item.setItemMeta(meta);
+        ItemMeta meta = item.getItemMeta();
 
-        return item;
-    }
-
-    /**
-     * Creates a new GUI item with a color
-     * @param material the material to use
-     * @param name the name of the item
-     * @param color the color to use
-     * @param lore the lore of the item
-     * @return the itemStack of the item
-     */
-    protected ItemStack createGuiItem(final Material material, final String name, int color, final String... lore) {
-
-        final ItemStack item = new ItemStack(material, 1, (byte)color);
-
-        final ItemMeta meta = item.getItemMeta();
-
-        // Set the name of the item
+        // Set the name of the item 
         meta.setDisplayName(name);
 
         // Set the lore of the item
