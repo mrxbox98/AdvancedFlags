@@ -11,9 +11,11 @@ public class AdvancedPlayer {
 
     public Player player;
 
-    public boolean rotate=false;
+    public boolean rotate = false;
 
-    public int flagId=-1;
+    public int flagId = -1;
+    
+    public int scale = 1;
 
     public boolean hidden = false;
 

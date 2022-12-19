@@ -96,8 +96,10 @@ public class AdvancedExecutor implements CommandExecutor {
      * @param player the player
      */
     public void hide(Player player) {
-        AdvancedPlayer.getAdvancedPlayer(player).hidden=!AdvancedPlayer.getAdvancedPlayer(player).hidden;
-        if(AdvancedPlayer.getAdvancedPlayer(player).hidden)
+        AdvancedPlayer ap = AdvancedPlayer.getAdvancedPlayer(player);
+        
+        ap.hidden =! ap.hidden;
+        if(ap.hidden)
         {
             LogHelper.send(player,"You will now not see flags.");
         }
@@ -112,14 +114,22 @@ public class AdvancedExecutor implements CommandExecutor {
      * @param player the player
      */
     public void rotate(Player player) {
-        if(player.hasPermission("flags.rotate"))
+        if(!player.hasPermission("flags.rotate"))
         {
-            AdvancedPlayer.getAdvancedPlayer(player).rotate=!AdvancedPlayer.getAdvancedPlayer(player).rotate;
+            LogHelper.send(player,"You do not have the permissions for this command.");
+        }
+
+        AdvancedPlayer ap = AdvancedPlayer.getAdvancedPlayer(player);
+        
+        ap.rotate = !ap.rotate;
+        
+        if(ap.rotate)
+        {
             LogHelper.send(player,"Flags will now automatically change.");
         }
         else
         {
-            LogHelper.send(player,"You do not have the permissions for this command.");
+            LogHelper.send(player,"Flags will not longer automatically change.");
         }
     }
 
