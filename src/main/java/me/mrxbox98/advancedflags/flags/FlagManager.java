@@ -249,15 +249,29 @@ public class FlagManager implements LogHelper {
         abbreviations = new ArrayList<>(Arrays.asList(csv));
 
         AdvancedFlags.getInstance().getLogger().info(CYAN+"↱STARTED FLAG LOADING↰"+RESET);
+        
+        ArrayList<String> loaded = new ArrayList<>();
+        
+        ArrayList<String> failed = new ArrayList<>();
 
         for (String abbreviation : abbreviations) {
             try {
                 flags.add(new Flag(abbreviation));
-                AdvancedFlags.getInstance().getLogger().info(CYAN+"Loaded: "+abbreviation);
+                loaded.add(abbreviation);
             } catch (IOException e) {
                 e.printStackTrace();
+                failed.add(abbreviation);
             }
         }
+        
+        if(loaded.size()>0) {
+            AdvancedFlags.getInstance().getLogger().info(CYAN+"Loaded: "+loaded);
+        }
+        
+        if(failed.size()>0) {
+            AdvancedFlags.getInstance().getLogger().warning(CYAN+"Failed: "+loaded);
+        }
+        
         AdvancedFlags.getInstance().getLogger().info(CYAN+"↳    FINISHED FLAGS  ↲"+RESET);
 
         AdvancedFlags.setupFlags();
