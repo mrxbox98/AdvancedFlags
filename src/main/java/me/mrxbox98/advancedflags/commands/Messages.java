@@ -1,6 +1,5 @@
 package me.mrxbox98.advancedflags.commands;
 
-import me.mrxbox98.advancedflags.AdvancedFlags;
 import net.md_5.bungee.api.ChatColor;
 
 public class Messages {

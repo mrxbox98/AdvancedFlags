@@ -43,7 +43,7 @@
                         <configuration>
                             <!-- replace shaded version with main artifact -->
                             <shadedArtifactAttached>false</shadedArtifactAttached>
-
+                            <minimizeJar>true</minimizeJar>
                             <!-- relocate API classes to avoid same-classpath-conflicts -->
                             <!-- with other plugins using this core API -->
                             <relocations>
