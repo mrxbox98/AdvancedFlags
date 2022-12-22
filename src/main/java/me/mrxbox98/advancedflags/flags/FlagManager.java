@@ -248,7 +248,7 @@ public class FlagManager implements LogHelper {
 
         abbreviations = new ArrayList<>(Arrays.asList(csv));
 
-        AdvancedFlags.getInstance().getLogger().info(CYAN+"↱STARTED FLAG LOADING↰"+RESET);
+        AdvancedFlags.getInstance().getLogger().info(CYAN+"Started loading flags"+RESET);
         
         ArrayList<String> loaded = new ArrayList<>();
         
@@ -269,10 +269,10 @@ public class FlagManager implements LogHelper {
         }
         
         if(failed.size()>0) {
-            AdvancedFlags.getInstance().getLogger().warning(CYAN+"Failed: "+loaded);
+            AdvancedFlags.getInstance().getLogger().warning(RED+"Failed: "+loaded);
         }
         
-        AdvancedFlags.getInstance().getLogger().info(CYAN+"↳    FINISHED FLAGS  ↲"+RESET);
+        AdvancedFlags.getInstance().getLogger().info(CYAN+"Finished loading flags"+RESET);
 
         AdvancedFlags.setupFlags();
     }
