@@ -64,6 +64,10 @@ public class AdvancedExecutor implements CommandExecutor {
                 rotate(player);
                 return true;
             }
+            case "scale": {
+                scale(player, Float.parseFloat(args[1]));
+                return true;
+            }
             case "none": {
                 none(player);
                 return true;
@@ -159,6 +163,10 @@ public class AdvancedExecutor implements CommandExecutor {
                 });
             }
         }
+    }
+    
+    public void scale(Player player, float scale) {
+        AdvancedPlayer.getAdvancedPlayer(player).scale=scale;
     }
 
     /**

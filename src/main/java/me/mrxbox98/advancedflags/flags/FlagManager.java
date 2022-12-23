@@ -3,6 +3,7 @@ package me.mrxbox98.advancedflags.flags;
 import me.mrxbox98.advancedflags.AdvancedFlags;
 import me.mrxbox98.advancedflags.LogHelper;
 import me.mrxbox98.advancedflags.config.AdvancedConfig;
+import me.mrxbox98.advancedflags.utils.AdvancedPlayer;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -308,6 +309,11 @@ public class FlagManager implements LogHelper {
         double zOffset1=0;
         double zOffset2=0;
 
+        float scale = AdvancedPlayer.getAdvancedPlayer(player).scale;
+        
+        xOffset*=scale;
+        yOffset*=scale;
+
         if(AdvancedConfig.rotateYaw)
         {
             xOffset*=Math.cos(Math.toRadians(player.getLocation().getYaw()));
@@ -320,7 +326,7 @@ public class FlagManager implements LogHelper {
 
         double zOffset=zOffset1+zOffset2;
 
-        return player.getLocation().add(xOffset,yOffset,zOffset);
+        return player.getLocation().add(xOffset,yOffset*scale,zOffset);
     }
 
     /**

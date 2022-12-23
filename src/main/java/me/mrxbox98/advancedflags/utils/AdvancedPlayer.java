@@ -15,7 +15,7 @@ public class AdvancedPlayer {
 
     public int flagId = -1;
     
-    public int scale = 1;
+    public float scale = 1;
 
     public boolean hidden = false;
 
