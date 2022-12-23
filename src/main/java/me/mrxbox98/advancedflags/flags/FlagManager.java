@@ -322,7 +322,7 @@ public class FlagManager implements LogHelper {
         }
 
         zOffset2+=getXOffset(passX);
-        yOffset+=4d;
+        yOffset+=AdvancedConfig.heightFromPlayer;
 
         double zOffset=zOffset1+zOffset2;
 
