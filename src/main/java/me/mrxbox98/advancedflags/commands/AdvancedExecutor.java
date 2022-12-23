@@ -65,7 +65,7 @@ public class AdvancedExecutor implements CommandExecutor {
                 return true;
             }
             case "scale": {
-                scale(player, Float.parseFloat(args[1]));
+                scale(player, args[1]);
                 return true;
             }
             case "none": {
@@ -165,8 +165,18 @@ public class AdvancedExecutor implements CommandExecutor {
         }
     }
     
-    public void scale(Player player, float scale) {
-        AdvancedPlayer.getAdvancedPlayer(player).scale=scale;
+    public void scale(Player player, String scale) {
+        
+        try {
+            AdvancedPlayer.getAdvancedPlayer(player).scale = Float.parseFloat(scale);
+            LogHelper.send(player, "Set scale to "+scale);
+        }
+        catch (Exception e)
+        {
+            LogHelper.send(player, "Scale must be a floating point value!");
+        }
+        
+        
     }
 
     /**
