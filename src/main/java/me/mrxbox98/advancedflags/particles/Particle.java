@@ -1,5 +1,6 @@
 package me.mrxbox98.advancedflags.particles;
 
+import com.github.fierioziy.particlenativeapi.api.packet.ParticlePacket;
 import me.mrxbox98.advancedflags.AdvancedFlags;
 import me.mrxbox98.advancedflags.config.AdvancedConfig;
 import org.bukkit.Bukkit;
@@ -30,8 +31,9 @@ public class Particle {
     public void display(Location location)
     {
         Bukkit.getScheduler().runTaskAsynchronously(AdvancedFlags.getInstance(), () -> {
-            Object packet = AdvancedFlags.particles.REDSTONE().packetColored(true,location,org.bukkit.Color.fromRGB(color.getRed(),color.getGreen(),color.getBlue()));
-            AdvancedFlags.particles.sendPacketIf(location, 30D, packet, AdvancedFlags.playerPredicate);
+            ParticlePacket packet = AdvancedFlags.particles.REDSTONE.packetColored(true, location, color.getRed(), color.getGreen(), color.getBlue());
+            
+            packet.sendInRadiusTo(AdvancedFlags.instance.getServer().getOnlinePlayers(), 30D, AdvancedFlags.playerPredicate);
         });
 
     }

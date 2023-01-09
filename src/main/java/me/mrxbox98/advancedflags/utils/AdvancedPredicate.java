@@ -1,9 +1,10 @@
 package me.mrxbox98.advancedflags.utils;
 
-import com.github.fierioziy.particlenativeapi.api.utils.PlayerPredicate;
 import org.bukkit.entity.Player;
 
-public class AdvancedPredicate implements PlayerPredicate {
+import java.util.function.Predicate;
+
+public class AdvancedPredicate implements Predicate<Player> {
 
     /**
      * Returns true if a packet should be sent to a player.
@@ -12,7 +13,7 @@ public class AdvancedPredicate implements PlayerPredicate {
      * @return true if a packet should be sent to a player, false otherwise.
      */
     @Override
-    public boolean shouldSend(Player player) {
+    public boolean test(Player player) {
         for(AdvancedPlayer advancedPlayer: AdvancedPlayer.advancedPlayers)
         {
             if(advancedPlayer.player.equals(player))
