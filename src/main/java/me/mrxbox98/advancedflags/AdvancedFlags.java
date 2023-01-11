@@ -29,7 +29,7 @@ public final class AdvancedFlags extends JavaPlugin implements LogHelper {
 
     public static int versionMC;
 
-    public static final String PLUGIN_VERSION = "1.3.0";
+    public static final String PLUGIN_VERSION = "1.3.1";
 
     public static HashMap<String, String> aliases = new HashMap<>();
 
